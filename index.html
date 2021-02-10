@@ -29,8 +29,8 @@
         <!-- <button class="menu-btn" onclick="onMenuClicked()">☰</button> -->
     </header>
     <main class="flex ">
-        
-        <section class="gallery-container hide"> 
+
+        <section class="gallery-container hide">
             GALLERY
         </section>
         <section class="editor-container">
@@ -43,20 +43,50 @@
                     >
                 </canvas>
             </div>
-            <div class="control flex">
+            <div class="control flex flex-col">
                 <input type="text" class="text-line" placeholder="Text" name="textLine" />
-                <button class="btn switch-focus" onclick="onSwitchFocus()"><img src='icons/up-and-down-opposite-double-arrows-side-by-side.png'></button>
-                <button class="btn add-line" onclick="onAddLine()"><img src='icons/add.png'></button>
-                <button class="btn delete-line" onclick="onRemoveLine()"><img src='icons/trash.png'></button>
-                <button class="btn increase-font" onclick="onIncreaseFont()"><img src='icons/increase font - icon.png'></button>
-                <button class="btn decrease-font" onclick="onDecreaseFont()"><img src='icons/decrease font - icon.png'></button>
-                <button class="btn align-left" onclick="onAlignLeft()"><img src='icons/align-to-left.png'></button>
-                <button class="btn align-center" onclick="onAlignCenter()"><img src='icons/center-text-alignment.png'></button>
-                <button class="btn align-right" onclick="onAlignRight()"><img src='icons/align-to-right.png'></button>
-                <button class="btn switch-stroke" onclick="onTextStroke()"><img src='icons/text stroke.png'></button>
-                <button class="btn switch-color" onclick="onColor()"><img src='icons/paint-board-and-brush.png'></button>
-                <button class="btn facebook" onclick="onColor()"><img src='icons/facebook-logo.png'></button>
-                <button class="btn download" onclick="onDownload()"><img src='icons/download.png'></button>
+                <div class="line-control">
+                    <button class="btn switch-focus" onclick="onSwitchFocus()">
+                        <img class="action-img" src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
+                    </button>
+                    <button class="btn add-line" onclick="onAddLine()">
+                        <img class="action-img" src="icons/add.png">
+                    </button>
+                    <button class="btn delete-line" onclick="onRemoveLine()">
+                        <img class="action-img" src="icons/trash.png">
+                    </button>
+                </div>
+                <div class="text-design">
+                    <button class="btn increase-font" onclick="onIncreaseFont()">
+                        <img class="action-img" src="icons/increase font - icon.png">
+                    </button>
+                    <button class="btn decrease-font" onclick="onDecreaseFont()">
+                        <img class="action-img" src="icons/decrease font - icon.png">
+                    </button>
+                    <button class="btn align-left" onclick="onAlignLeft()">
+                        <img class="action-img" src="icons/align-to-left.png">
+                    </button>
+                    <button class="btn align-center" onclick="onAlignCenter()">
+                        <img class="action-img" src="icons/center-text-alignment.png">
+                    </button>
+                    <button class="btn align-right" onclick="onAlignRight()">
+                        <img class="action-img" src="icons/align-to-right.png">
+                    </button>
+                    <button class="btn switch-stroke" onclick="onTextStroke()">
+                        <img class="action-img" src="icons/text stroke.png">
+                    </button>
+                    <button class="btn switch-color" onclick="onColor()">
+                        <img class="action-img" src="icons/paint-board-and-brush.png">
+                    </button>
+                </div>
+                <div class="save-area">
+                    <button class="btn facebook" onclick="onColor()">
+                        <img class="action-img" src='icons/facebook-logo.png'>
+                    </button>
+                    <button class="btn download" onclick="onDownload()">
+                        <img class="action-img" src='icons/download.png'>
+                    </button>
+                </div>
             </div>
         </section>
         <section class="memes-container hide">

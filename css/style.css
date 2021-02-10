@@ -103,6 +103,9 @@ li:hover{
     max-height:200px;
 }
 
+.download{
+background-image: url('icons/download.png');
+}
 
 
 
@@ -177,9 +180,19 @@ canvas{
     cursor: pointer;
     height: 30px;
     width: 50px;
+    background-color: #da7b2d;
+    border-radius: 15%;
+    line-height: 30px;
+    
+
 }
 
-
+.action-img{
+    height: 90%;
+    width: 80%;
+    /* height: 30px;
+    width: 50px; */
+}
 
 footer{
     background-color:#292929;

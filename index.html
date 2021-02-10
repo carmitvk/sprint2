@@ -29,7 +29,6 @@
         <!-- <button class="menu-btn" onclick="onMenuClicked()">☰</button> -->
     </header>
     <main class="flex ">
-        <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
         
         <section class="gallery-container hide"> 
             GALLERY
@@ -45,9 +44,19 @@
                 </canvas>
             </div>
             <div class="control flex">
-                <button class="btn" onclick="onAddTxt()">Add Txt</button>
-                <button class="btn">Btn</button>
-                <button class="btn">Btn</button>
+                <input type="text" class="text-line" placeholder="Text" name="textLine" />
+                <button class="btn switch-focus" onclick="onSwitchFocus()"><img src='icons/up-and-down-opposite-double-arrows-side-by-side.png'></button>
+                <button class="btn add-line" onclick="onAddLine()"><img src='icons/add.png'></button>
+                <button class="btn delete-line" onclick="onRemoveLine()"><img src='icons/trash.png'></button>
+                <button class="btn increase-font" onclick="onIncreaseFont()"><img src='icons/increase font - icon.png'></button>
+                <button class="btn decrease-font" onclick="onDecreaseFont()"><img src='icons/decrease font - icon.png'></button>
+                <button class="btn align-left" onclick="onAlignLeft()"><img src='icons/align-to-left.png'></button>
+                <button class="btn align-center" onclick="onAlignCenter()"><img src='icons/center-text-alignment.png'></button>
+                <button class="btn align-right" onclick="onAlignRight()"><img src='icons/align-to-right.png'></button>
+                <button class="btn switch-stroke" onclick="onTextStroke()"><img src='icons/text stroke.png'></button>
+                <button class="btn switch-color" onclick="onColor()"><img src='icons/paint-board-and-brush.png'></button>
+                <button class="btn facebook" onclick="onColor()"><img src='icons/facebook-logo.png'></button>
+                <button class="btn download" onclick="onDownload()"><img src='icons/download.png'></button>
             </div>
         </section>
         <section class="memes-container hide">

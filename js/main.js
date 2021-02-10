@@ -8,7 +8,13 @@ function init() {
     gElCanvas = document.getElementById('meme-canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery();
-    onPickImg('2');
+    //hide gallery
+    var element = document.querySelector('.gallery-container');
+    element.style.display= 'none';
+    
+    //display the Editor
+    element = document.querySelector('.editor-container');
+    element.style.display= 'flex';
 }
 
 function onNavClicked(el, clsName) {
@@ -49,24 +55,39 @@ function renderGallery() {
     elGallery.innerHTML = strHtml.join('');
 }
 
-function onPickImg(id) {
-    //put into canvas
-    document.querySelector('canvas').innerHTML = ''
-    var img = new Image()
-    img.src = `img/${id}.jpg`;
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 
+
+function onPickImg(id) {
     //hide gallery
     var element = document.querySelector('.gallery-container');
-    // element.classList.add('hide');
     element.style.display= 'none';
 
     //display the Editor
-    var element = document.querySelector('.editor-container');
-    // element.classList.remove('hide');
+    element = document.querySelector('.editor-container');
     element.style.display= 'flex';
 
     //Save to current Meme
+    gCurrMeme.selectedImgId = id;
 
+    //Editor pressed, Gallery not //TODO
+
+    //print data on canvas
+    renderCanVas();
 }
 
+function renderCanVas(){
+
+
+    //put into canvas
+    document.querySelector('canvas').innerHTML = ''
+    var img = new Image()
+    img.src = gImgs[gCurrMeme.selectedImgId-1].url;
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+// function onCleanCanvas(){
+
+// }
+
+function onAddLine(){
+
+}

@@ -66,11 +66,11 @@ html {
     /* object-fit: cover; */
 }
 
-/* .sub-nav-press.sub-nav{ */
-    /* border-bottom: 4px solid rgb(75, 138, 75); */
-    /* box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0  #af5912; */
+.sub-nav-press.sub-nav{ 
+    border-bottom: 4px solid #af5912;
+    box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0  #af5912;
     /* color: rgb(75, 138, 75); */
-/* } */
+}
 
 .main-nav{
     /* flex-basis: 52%; */
@@ -81,6 +81,15 @@ li:hover{
     background-color: rgba(0, 0, 0, 90%);
     box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0 #af5912;
     transition: background-color .3s;
+}
+
+.hide{
+    display:none;
+}
+
+.one-img{
+    flex-basis: 10%;
+    max-width:300px;
 }
 
 

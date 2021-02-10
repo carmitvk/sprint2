@@ -9,21 +9,19 @@
     <title>Meme</title>
 </head>
 
-<body>
+<body onload="init()">
     <header class="hdr flex center">
         <div class="hdr-content  flex">
             <div class="logo"><img class="logo-img" src="icons/LOGO.png"></div>
             <ul class="main-nav clean-list flex">
-                <li class="nav-btn" onclick="onJournalClick()" onmouseenter="onHoverJournal()"
-                    onmouseleave="onHoverJournal()">
-                    <a class="sub-nav flex center" onclick="onNavClicked(this)">Gallery</a>
-                </li>
-                <li class="nav-btn" onclick="onJournalClick()" onmouseenter="onHoverJournal()"
-                    onmouseleave="onHoverJournal()">
-                    <a class="sub-nav flex center" onclick="onNavClicked(this)">Editor</a>
+                <li class="nav-btn">
+                    <a class="sub-nav flex center" onclick="onNavClicked(this, 'gallery-container')">Gallery</a>
                 </li>
                 <li class="nav-btn">
-                    <a class="sub-nav flex center" onclick="onNavClicked(this)">About</a>
+                    <a class="sub-nav flex center" onclick="onNavClicked(this, 'editor-container')">Editor</a>
+                </li>
+                <li class="nav-btn">
+                    <a class="sub-nav flex center" onclick="onNavClicked(this, 'memes-container')">Memes</a>
                 </li>
             </ul>
 
@@ -31,30 +29,40 @@
         <!-- <button class="menu-btn" onclick="onMenuClicked()">☰</button> -->
     </header>
     <main class="flex ">
-        <div class="canvas-container flex">
-            <canvas id="meme-canvas" class="flex" height="500" width="500">
-                <!-- height="553" width="543" -->
-                <!-- onclick="draw(event)"  -->
-                <!-- onmousedown="mouseDown(event)" onmousemove="mouseMove(event)" onmouseup="mouseUp()" 
+        <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
+        
+        <section class="gallery-container hide"> 
+            GALLERY
+        </section>
+        <section class="editor-container">
+            <div class="canvas-container flex">
+                <canvas id="meme-canvas" class="flex" height="500" width="500">
+                    <!-- height="553" width="543" -->
+                    <!-- onclick="draw(event)"  -->
+                    <!-- onmousedown="mouseDown(event)" onmousemove="mouseMove(event)" onmouseup="mouseUp()" 
                                                         ontouchstart="mouseDown(event)" ontouchmove="mouseMove(event)" ontouchend="mouseUp()" -->
-                >
-            </canvas>
-        </div>
-        <div class="control flex">
-            <button class="btn">Btn</button>
-            <button class="btn">Btn</button>
-            <button class="btn">Btn</button>
-        </div>
+                    >
+                </canvas>
+            </div>
+            <div class="control flex">
+                <button class="btn" onclick="onAddTxt()">Add Txt</button>
+                <button class="btn">Btn</button>
+                <button class="btn">Btn</button>
+            </div>
+        </section>
+        <section class="memes-container hide">
+            MEMS
+        </section>
     </main>
-
     <footer class="flex flex-col center">
         <div class="logo flex"><img class="logo-img flex center " src="icons/LOGO.png"></div>
-        <div class="flex">@coffee 2021</div>
+        <div class="flex">@coffee carmit vaknin 2021</div>
     </footer>
 
 
 
-
+    <script src="js/storage_service.js"></script>
+    <script src="js/meme_service.js"></script>
     <script src="js/upload_service.js"></script>
     <script src="js/main.js"></script>
 </body>

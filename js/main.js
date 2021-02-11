@@ -109,13 +109,14 @@ function onSwitchFocus() {
 
 function onAddLine() {
     var currMeme = getCurrMeme();
-    var txt='from Input';
+    var txt=document.querySelector('input[name=textLine]').value;
+
     var x =document.querySelector('.canvas-container').offsetWidth/2;
     var y;
     if (currMeme.lines.length === 0){
         y=50;
     }else if (currMeme.lines.length === 1){
-        y=document.querySelector('.canvas-container').offsetHeight+100;
+        y=document.querySelector('.canvas-container').offsetHeight+70;
     } else if (currMeme.lines.length === 2){
         y=document.querySelector('.canvas-container').offsetHeight/2;
     }else {

@@ -95,7 +95,7 @@ function createLine(txt,x,y,size=20,align='center',color='blue',stroke='black',f
 }
 
 
-function getMeme() {
+function getMemes() {
     return gMemes;
 }
 
@@ -110,15 +110,33 @@ function setCurrImg(id, url) {
 
 function saveLocallyCurrMeme() {
     addMemeToMems();
-    saveMemeToStorage();
+    saveMemesToStorage();
+}
+
+function getMemById(memeId){
+    const pickedMeme = gMemes.find(meme => meme.id === memeId);
+    if (!pickedMeme) return -1;
+    return pickedMeme;
+}
+
+function getIdxMemById(id){
+    gMemes.findIndex(meme => meme.id === id);
+}
+
+function setCurrMemeToNew(pickedMeme){
+    gCurrMeme = pickedMeme; //all data are same
+    // gCurrMeme.id=gNextId++; //except for id. its a new editble meme
 }
 
 
 function addMemeToMems(){
-    gMemes.push(gCurrMeme);
+    gCurrMeme.id=gNextId++;
+    var newMeme;
+    newMeme =JSON.parse(JSON.stringify(gCurrMeme))
+    gMemes.push(newMeme);
 }
 
-function saveMemeToStorage() {
+function saveMemesToStorage() {
     saveToStorage(KEY_MEMES, gMemes)
 }
 

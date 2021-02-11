@@ -26,7 +26,7 @@
             </ul>
 
         </div>
-        <button class="menu-btn" onclick="onMenuClicked()">☰</button>
+        <button class="menu-btn" onclick="onMenuClicked()" ontouchstart="onMenuClicked()">☰</button>
     </header>
     <main class="flex main-container">
 
@@ -45,44 +45,42 @@
             <div class="control flex flex-col">
                 <input type="text" class="text-line" placeholder="Text" name="textLine" />
                 <div class="line-control">
-                    <button class="btn move-right" onclick="onMoveRight()">
+                    <button class="btn move-right" onclick="onMoveRight()" ontouchstart="onMoveRight()">
                         <img class="action-img" src="icons/right-arrow.png">
                     </button>
-                    <button class="btn move-left" onclick="onMoveLeft()">
+                    <button class="btn move-left" onclick="onMoveLeft()" ontouchstart="onMoveLeft()">
                         <img class="action-img" src="icons/arrow-left.png">
                     </button>
-                    <button class="btn move-up" onclick="onMoveUp()">
+                    <button class="btn move-up" onclick="onMoveUp()" ontouchstart="onMoveUp()">
                         <img class="action-img" src="icons/up.png">
                     </button>
-                    <button class="btn move-down" onclick="onMoveDown()">
+                    <button class="btn move-down" onclick="onMoveDown()" ontouchstart="onMoveDown()">
                         <img class="action-img" src="icons/down.png">
                     </button>
-
-
-                    <button class="btn switch-focus" onclick="onSwitchFocus()">
+                    <button class="btn switch-focus" onclick="onSwitchFocus()" ontouchstart="onSwitchFocus()">
                         <img class="action-img" src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
                     </button>
-                    <button class="btn add-line" onclick="onAddLine()">
+                    <button class="btn add-line" onclick="onAddLine()" ontouchstart="onAddLine()">
                         <img class="action-img" src="icons/add.png">
                     </button>
-                    <button class="btn delete-line" onclick="onRemoveLine()">
+                    <button class="btn delete-line" onclick="onRemoveLine()" ontouchstart="onRemoveLine()">
                         <img class="action-img" src="icons/trash.png">
                     </button>
                 </div>
                 <div class="text-design">
-                    <button class="btn increase-font" onclick="onIncreaseFont()">
+                    <button class="btn increase-font" onclick="onIncreaseFont()" ontouchstart="onIncreaseFont()">
                         <img class="action-img" src="icons/increase font - icon.png">
                     </button>
-                    <button class="btn decrease-font" onclick="onDecreaseFont()">
+                    <button class="btn decrease-font" onclick="onDecreaseFont()" ontouchstart="onDecreaseFont()">
                         <img class="action-img" src="icons/decrease font - icon.png">
                     </button>
-                    <button class="btn align-left" onclick="onAlignLeft()">
+                    <button class="btn align-left" onclick="onAlignLeft()" ontouchstart="onAlignLeft()">
                         <img class="action-img" src="icons/align-to-left.png">
                     </button>
-                    <button class="btn align-center" onclick="onAlignCenter()">
+                    <button class="btn align-center" onclick="onAlignCenter()" ontouchstart="onAlignCenter()">
                         <img class="action-img" src="icons/center-text-alignment.png">
                     </button>
-                    <button class="btn align-right" onclick="onAlignRight()">
+                    <button class="btn align-right" onclick="onAlignRight()" ontouchstart="onAlignRight()">
                         <img class="action-img" src="icons/align-to-right.png">
                     </button>
 
@@ -100,17 +98,15 @@
                 </div>
                 <div class="save-area">
                     
-                    <button class="btn save" onclick="onSaveLocally()">
-                        <img class="action-img" src='icons/'>
+                    <button class="btn save" onclick="onSaveLocally()" ontouchstart="onSaveLocally()">
+                        <img class="action-img" src='icons/local-save.png'>
                     </button>
-                    <button class="btn facebook" onclick="onFacebookPublish()">
+                    <button class="btn facebook" onclick="onFacebookPublish()" ontouchstart="onFacebookPublish()">
                         <img class="action-img" src='icons/facebook-logo.png'>
                     </button>
-                    <button class="btn download" onclick="onDownload()">
+                    <a class="btn download" href="#" onclick="onDownload(this)" ontouchstart="onDownload(this)" download="">
                         <img class="action-img" src='icons/download.png'>
-                    </button>
-                    <!-- <button class="btn clean-canvas" onclick="onCleanCanvas()">
-                    </button> -->
+                      </a>
                 </div>
             </div>
         </section>

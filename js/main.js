@@ -353,6 +353,8 @@ function onFacebookPublish() {
 
 
 
-function onDownload() {
-
+function onDownload(elLink) {
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'my-img.jpg';
 }

@@ -37,7 +37,7 @@ function onMenuClicked(){
     element = document.querySelector('main');
     element.classList.toggle('menu-open');
 
-    // var element = document.querySelector('.main-nav');
+    var elMainNav = document.querySelector('.main-nav');
     // if (element.style.display === 'flex'){
     //     element.style.display = 'none';
     // }else{
@@ -48,9 +48,12 @@ function onMenuClicked(){
     element = document.querySelector('.menu-btn');
     element.classList.toggle('menu-open')//???
     if (element.innerHTML === 'X'){
+        elMainNav.style.display = 'none';
         element.innerHTML = '☰';
+
     }else{
         element.innerHTML = 'X';
+        elMainNav.style.display = 'flex';
     }
 }
 

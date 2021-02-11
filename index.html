@@ -15,10 +15,10 @@
             <div class="logo"><img class="logo-img" src="icons/LOGO.png"></div>
             <ul class="main-nav clean-list flex">
                 <li class="nav-btn">
-                    <a class="sub-nav flex center" onclick="onNavClicked(this, 'gallery-container')">Gallery</a>
+                    <a id="gallery-tab" class="sub-nav flex center" onclick="onNavClicked(this, 'gallery-container')">Gallery</a>
                 </li>
                 <li class="nav-btn">
-                    <a class="sub-nav flex center" onclick="onNavClicked(this, 'editor-container')">Editor</a>
+                    <a id="editor-tab" class="sub-nav flex center" onclick="onNavClicked(this, 'editor-container')">Editor</a>
                 </li>
                 <li class="nav-btn">
                     <a class="sub-nav flex center" onclick="onNavClicked(this, 'memes-container')">Memes</a>
@@ -30,8 +30,12 @@
     </header>
     <main class="flex ">
 
-        <section class="gallery-container hide">
-            GALLERY
+        <section class="gallery-container ">
+            <!-- <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
+                            <option value="Politic">Politic</option>
+                            <option value="Animaly">Animaly</option>
+                            <option value="Happy">Happy</option>
+            </select> -->
         </section>
         <section class="editor-container">
             <div class="canvas-container flex">
@@ -46,6 +50,20 @@
             <div class="control flex flex-col">
                 <input type="text" class="text-line" placeholder="Text" name="textLine" />
                 <div class="line-control">
+                    <button class="btn move-right" onclick="onMoveRight()">
+                        <img class="action-img" src="icons/right-arrow.png">
+                    </button>
+                    <button class="btn move-left" onclick="onMoveLeft()">
+                        <img class="action-img" src="icons/arrow-left.png">
+                    </button>
+                    <button class="btn move-up" onclick="onMoveUp()">
+                        <img class="action-img" src="icons/up.png">
+                    </button>
+                    <button class="btn move-down" onclick="onMoveDown()">
+                        <img class="action-img" src="icons/down.png">
+                    </button>
+
+
                     <button class="btn switch-focus" onclick="onSwitchFocus()">
                         <img class="action-img" src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
                     </button>
@@ -72,15 +90,27 @@
                     <button class="btn align-right" onclick="onAlignRight()">
                         <img class="action-img" src="icons/align-to-right.png">
                     </button>
-                    <button class="btn switch-stroke" onclick="onTextStroke()">
+
+                    <select class="font-family" onchange="onSetFontFamily(this.value)" aria-label=" ">
+                        <option value="Arial">Arial</option>
+                        <option value="David">David</option>
+                        <option value="Miryam">Miryam</option>
+                    </select>
+
+                    stroke:<input type="color" class="switch-stroke" placeholder="switch-stroke"
+                        onchange="onTextStroke()" name="switchStroke" required />
+
+                    <!-- <button class="btn switch-stroke" onclick="onTextStroke()">
                         <img class="action-img" src="icons/text stroke.png">
-                    </button>
-                    <button class="btn switch-color" onclick="onColor()">
+                    </button> -->
+                    <!-- <button class="btn switch-color" onclick="onSetColor()">
                         <img class="action-img" src="icons/paint-board-and-brush.png">
-                    </button>
+                    </button> -->
+                    color:<input type="color" class="set-color" placeholder="set-color" onchange="onSetColor()"
+                        name="setColor" required />
                 </div>
                 <div class="save-area">
-                    <button class="btn facebook" onclick="onColor()">
+                    <button class="btn facebook" onclick="onFacebookPublish()">
                         <img class="action-img" src='icons/facebook-logo.png'>
                     </button>
                     <button class="btn download" onclick="onDownload()">
@@ -92,7 +122,7 @@
                 </div>
             </div>
         </section>
-        <section class="memes-container hide">
+        <section class="memes-container">
             MEMS
         </section>
     </main>

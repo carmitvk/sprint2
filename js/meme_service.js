@@ -1,4 +1,3 @@
-
 'use strict'
 const KEY_MEMES = 'gMemes';
 var gNextId = 1;
@@ -8,14 +7,14 @@ var gCurrMeme;
 var gKeywords = { 'politic': 12, 'animals': 1 };//TODO: fill data
 
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['politic'] },
-{ id: 2, url:  'img/2.jpg',  keywords: ['animals'] },
-{ id: 3, url:  'img/3.jpg',  keywords: ['animals'] },
-{ id: 4, url:  'img/4.jpg',  keywords: ['animals'] },
-{ id: 5, url:  'img/5.jpg',  keywords: ['animals'] },
-{ id: 6, url:  'img/6.jpg',  keywords: ['animals'] },
-{ id: 7, url:  'img/7.jpg',  keywords: ['animals'] },
-{ id: 8, url:  'img/8.jpg',  keywords: ['animals'] },
-{ id: 9, url:  'img/9.jpg',  keywords: ['animals'] },
+{ id: 2, url: 'img/2.jpg', keywords: ['animals'] },
+{ id: 3, url: 'img/3.jpg', keywords: ['animals'] },
+{ id: 4, url: 'img/4.jpg', keywords: ['animals'] },
+{ id: 5, url: 'img/5.jpg', keywords: ['animals'] },
+{ id: 6, url: 'img/6.jpg', keywords: ['animals'] },
+{ id: 7, url: 'img/7.jpg', keywords: ['animals'] },
+{ id: 8, url: 'img/8.jpg', keywords: ['animals'] },
+{ id: 9, url: 'img/9.jpg', keywords: ['animals'] },
 { id: 10, url: 'img/10.jpg', keywords: ['animals'] },
 { id: 11, url: 'img/11.jpg', keywords: ['animals'] },
 { id: 12, url: 'img/12.jpg', keywords: ['animals'] },
@@ -28,15 +27,13 @@ var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['politic'] },
 ];
 
 
-
 _createMemes();
 gCurrMeme = _createCurrMeme();
-
 
 function _createMemes() {
     var memes = loadFromStorage(KEY_MEMES)
     if (memes || memes.length) {
-    //update next created index to start from last existing index in storage +1. 
+        //update next created index to start from last existing index in storage +1. 
         var maxIdx = 0;
         memes.forEach(meme => {
             if (meme.id > maxIdx) {
@@ -48,42 +45,58 @@ function _createMemes() {
     gMemes = memes;
 }
 
-
 function _createCurrMeme() {
-
-
-
-
-
-    return  [{
-        id: gNextId++, selectedImgId: 1, selectedLineIdx: 0, lines: []
-        // {
-        //     // startX:
-        //     // startY:
-        //     // endX:
-        //     // endY:
-        //     txt: 'I never eat Falafel',
-        //     size: 20,
-        //     align: 'left',
-        //     color: 'red'
-        // }
+    return {
+        id: gNextId++, selectedImgId: 3, selectedImgUrl: 'img/3.jpg', selectedLineIdx: 0, lines: [
+            {
+                txt: 'I never eat Falafel',
+                size: 20,
+                align: 'left',
+                color: 'red',
+                stroke: 'black',
+                fontSize: 40,
+                fontFamily: 'Arial',
+                x: 100,
+                y: 100
+            },
+            {
+                txt: 'I am second line',
+                size: 20,
+                align: 'left',
+                color: 'red',
+                stroke: 'black',
+                fontSize: 40,
+                fontFamily: 'Arial',
+                x: 100,
+                y: 400
+            }
+        ]
     }
-
-    ]
-
 }
-
-
 
 function getMeme() {
     return gMemes;
-
 }
+
+function getCurrMeme() {
+    return gCurrMeme;
+}
+
+function setCurrImg(id, url) {
+    gCurrMeme.selectedImgId = id;
+    gCurrMeme.selectedImgUrl = url;
+}
+
+function saveLocallyCurrMeme() {
+    saveToStorage(KEY_MEME, gCurrMeme);
+    //????
+}
+
+
 
 function saveMemeToStorage() {
     saveToStorage(KEY_MEME, gMemes)
 }
-
 
 function getImgs() {
     return gImgs;

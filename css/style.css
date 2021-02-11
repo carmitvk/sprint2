@@ -83,12 +83,8 @@ li:hover{
     transition: background-color .3s;
 }
 
-.hide{
-    display:none;
-}
-
 .gallery-container{
-    display: flex;
+    display: none;
     padding: 10px;
     flex-wrap: wrap;
     width: 100%;
@@ -96,6 +92,15 @@ li:hover{
     background-color: #af5912;
 
 }
+
+.memes-container{
+    display: none;
+}
+
+.editor-container{
+    display: none;
+}
+
 .one-img{
     /* flex-basis: 10%; */
     margin: 5px;
@@ -155,9 +160,7 @@ background-image: url('icons/download.png');
 
 
 canvas{
-    /* display: inline-block; */
     margin: 10px auto 10px 20px;
-    /* border: 1px solid rgb(168, 141, 115); */
     background-color: rgb(206, 133, 65);
     order:1;
 }
@@ -181,7 +184,7 @@ canvas{
     background-color: #da7b2d;
     border-radius: 15%;
     line-height: 30px;
-    
+    outline: none;
 
 }
 

@@ -37,12 +37,12 @@ function onMenuClicked(){
     element = document.querySelector('main');
     element.classList.toggle('menu-open');
 
-    var element = document.querySelector('.main-nav');
-    if (element.style.display === 'flex'){
-        element.style.display = 'none';
-    }else{
-        element.style.display = 'flex';
-    }
+    // var element = document.querySelector('.main-nav');
+    // if (element.style.display === 'flex'){
+    //     element.style.display = 'none';
+    // }else{
+    //     element.style.display = 'flex';
+    // }
     
 
     element = document.querySelector('.menu-btn');

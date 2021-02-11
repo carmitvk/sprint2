@@ -30,6 +30,25 @@ function onNavClicked(el, clsName) {
     element.style.display = 'flex';
 }
 
+function onMenuClicked(){
+    var element = document.querySelector('.main-nav');
+    element.classList.toggle('menu-open');
+
+    element = document.querySelector('main');
+    element.classList.toggle('menu-open');
+
+    var element = document.querySelector('.main-nav');
+    element.style.display = 'flex';
+
+    element = document.querySelector('.menu-btn');
+    if (element.innerHTML === 'X'){
+        element.innerHTML = '☰';
+    }else{
+        element.innerHTML = 'X';
+    }
+}
+
+
 function renderGallery() {
     var imgs = getImgs();
     var strHtml = imgs.map(img => {
@@ -209,26 +228,34 @@ function onAddLine() {
 
 function onMoveRight() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].x = currMeme.lines[currMeme.selectedLineIdx].x + 5;
     renderCanVas();
+    }
 }
 
 function onMoveLeft() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].x = currMeme.lines[currMeme.selectedLineIdx].x - 5;
     renderCanVas();
+    }
 }
 
 function onMoveUp() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].y = currMeme.lines[currMeme.selectedLineIdx].y - 5;
     renderCanVas();
+    }
 }
 
 function onMoveDown() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].y = currMeme.lines[currMeme.selectedLineIdx].y + 5;
     renderCanVas();
+    }
 }
 
 function onRemoveLine() {
@@ -241,56 +268,71 @@ function onRemoveLine() {
 
 function onSetFontFamily(fontFamily) {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].fontFamily = fontFamily;
     renderCanVas();
+    }
 }
 
 function onIncreaseFont() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].fontSize++;
     renderCanVas();
+    }
 }
 
 function onDecreaseFont() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].fontSize--;
     renderCanVas();
+    }
 }
 
 function onAlignLeft() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].x = 10;
     currMeme.lines[currMeme.selectedLineIdx].align = 'left';
     renderCanVas();
+    }
 }
 
 function onAlignCenter() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     var elementCenter = document.querySelector('.canvas-container').offsetWidth / 2;
     currMeme.lines[currMeme.selectedLineIdx].x = elementCenter;
     currMeme.lines[currMeme.selectedLineIdx].align = 'center';
     renderCanVas();
+    }
 }
 
 function onAlignRight() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     var elementEnd = document.querySelector('.canvas-container').offsetWidth + 40;
-    console.log('elementEnd===', elementEnd);
     currMeme.lines[currMeme.selectedLineIdx].x = elementEnd;
     currMeme.lines[currMeme.selectedLineIdx].align = 'right';
     renderCanVas();
+    }
 }
 
 function onTextStroke() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].stroke = document.querySelector('input[name=switchStroke]').value;
     renderCanVas();
+    }
 }
 
 function onSetColor() {
     var currMeme = getCurrMeme();
+    if (currMeme.lines[currMeme.selectedLineIdx]){
     currMeme.lines[currMeme.selectedLineIdx].color = document.querySelector('input[name=setColor]').value;
     renderCanVas();
+    }
 }
 
 function onSaveLocally() {

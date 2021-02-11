@@ -69,6 +69,38 @@ li:hover{
     transition: background-color .3s;
 }
 
+.menu-btn{
+    display:none;
+    height: 20px;
+    width: 20px;
+    font-size: 1.1em;
+    align-items: center;
+    background-color: rgb(245, 135, 9);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    position:absolute;
+    right: 37px;
+    text-align: center;
+    justify-content: center;
+    z-index:1000;
+}
+
+
+
+
+.main-container {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
 .gallery-container, .memes-container{
     display: none;
     padding: 10px;
@@ -89,12 +121,7 @@ li:hover{
     max-height:200px;
 }
   
-.menu-btn{
-    display:none;
-    /* height: 40px;
-    width: 40px; */
-    font-size: 2em;
-}
+
    
 canvas{
     margin: 10px auto 10px 20px;
@@ -175,4 +202,40 @@ footer{
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+
+
+@media (max-width: 740px){
+
+    .menu-btn{
+        display: flex;
+    }
+
+    main.menu-open{
+        background-color: rgb(206, 134, 75);
+        opacity:0.5
+    }
+
+    .main-nav{
+        display: none!important;
+    }
+    .main-nav.menu-open{
+        display: flex!important;
+        flex-direction: column;
+        position: absolute;
+        top:2vh;
+        right: 6%;
+        z-index:999;
+        height: 60%;
+        background-color:rgba(0, 0, 0, 90%);
+    }
+
+    .sub-nav{
+    height: 100%;
+    }
+
+
+
+
 }

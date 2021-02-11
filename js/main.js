@@ -31,8 +31,6 @@ function onNavClicked(el, clsName) {
 }
 
 function onMenuClicked(){
-
-    console.log('on onMenuClicked');
     var element = document.querySelector('.main-nav');
     element.classList.toggle('menu-open');
 
@@ -46,7 +44,6 @@ function onMenuClicked(){
     //     element.style.display = 'flex';
     // }
     
-
     element = document.querySelector('.menu-btn');
     element.classList.toggle('menu-open')//???
     if (element.innerHTML === 'X'){
@@ -59,26 +56,23 @@ function onMenuClicked(){
     }
 }
 
-
 function renderGallery() {
     var imgs = getImgs();
     var strHtml = imgs.map(img => {
         return `<img class='one-img' src='${img.url}' onclick="onPickImg(${img.id},'${img.url}')" alt="">`
     });
-    var elGallery = document.querySelector('.gallery-container');
+    var elGallery = document.querySelector('.img-container');
+    // var elGallery = document.querySelector('.gallery-container'); //carmit
     elGallery.innerHTML = strHtml.join('');
 }
 
 function renderMems() {
     var memes = getMemes();
-    // var htmlStartContainer = `<div class="memes-canvas-container flex">`
     var strHtmls = memes.map(meme => {
         return `<canvas id="meme-canvas${meme.id}" class="flex" onclick="onPickMeme(${meme.id})" height="250" width="250">    
                 </canvas>`
     });
-    // var htmlEndContainer = `</div>`;
     var elMemes = document.querySelector('.memes-container');
-    // elMemes.innerHTML = htmlStartContainer + strHtmls.join('') + htmlEndContainer;
     elMemes.innerHTML = strHtmls.join('');
     renderMemCanvases();
 }
@@ -115,6 +109,13 @@ function renderMemCanvases() {
         }
         img.src = meme.selectedImgUrl;
     });
+}
+
+function onInsertText(el){
+    console.log('onInsertText');
+    var currMeme = getCurrMeme();
+    currMeme.lines[currMeme.selectedLineIdx].txt= el.value;
+    renderCanVas();
 }
 
 function onPickImg(id, url) {
@@ -212,10 +213,10 @@ function onSwitchFocus() {
     }
 }
 
-function onAddLine() {
+function createNewLine(){ 
+    console.log('createNewLine');
+    //set x y
     var currMeme = getCurrMeme();
-    var txt = document.querySelector('input[name=textLine]').value;
-
     var x = gElCanvas.width / 2;
     var y;
     if (currMeme.lines.length === 0) {
@@ -230,12 +231,21 @@ function onAddLine() {
             y = 20;
         }
     }
-
-    var newLine = createLine(txt, x, y);
+    var newLine = createLine('', x, y);
     addLine(newLine);
     currMeme.selectedLineIdx = currMeme.lines.length - 1;
-    renderCanVas();
 }
+
+// function onUpdateLine(txt) {
+//     var currMeme = getCurrMeme();
+//     // var txt = document.querySelector('input[name=textLine]').value;
+
+//     var x = currMeme.lines[currMeme.selectedLineIdx].txt= txt;
+//     // var newLine = createLine(txt, x, y);
+//     // addLine(newLine);
+//     // currMeme.selectedLineIdx = currMeme.lines.length - 1;
+//     renderCanVas();
+// }
 
 function onMoveRight() {
     var currMeme = getCurrMeme();
@@ -355,10 +365,13 @@ function onFacebookPublish() {
 
 }
 
-
-
 function onDownload(elLink) {
     const data = gElCanvas.toDataURL();
     elLink.href = data;
     elLink.download = 'my-img.jpg';
+}
+
+function onSetGalleryFilter(filter){
+    setGalleryFilter(filter);
+    renderGallery();
 }

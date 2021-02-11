@@ -3,29 +3,30 @@ const KEY_MEMES = 'gMemes';
 var gNextId = 1;
 var gMemes;
 var gCurrMeme;
+var gGalleryFilter;
 
-var gKeywords = { 'politic': 12, 'animals': 1 };//TODO: fill data
+var gKeywords = { 'Politic': 2, 'Peoples': 4,'Animales': 6,'Cute': 2,'Happy': 6 ,'Robots': 4};
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['politic'] },
-{ id: 2, url: 'img/2.jpg', keywords: ['animals'] },
-{ id: 3, url: 'img/3.jpg', keywords: ['animals'] },
-{ id: 4, url: 'img/4.jpg', keywords: ['animals'] },
-{ id: 5, url: 'img/5.jpg', keywords: ['animals'] },
-{ id: 6, url: 'img/6.jpg', keywords: ['animals'] },
-{ id: 7, url: 'img/7.jpg', keywords: ['animals'] },
-{ id: 8, url: 'img/8.jpg', keywords: ['animals'] },
-{ id: 9, url: 'img/9.jpg', keywords: ['animals'] },
-{ id: 10, url: 'img/10.jpg', keywords: ['animals'] },
-{ id: 11, url: 'img/11.jpg', keywords: ['animals'] },
-{ id: 12, url: 'img/12.jpg', keywords: ['animals'] },
-{ id: 13, url: 'img/13.jpg', keywords: ['animals'] },
-{ id: 14, url: 'img/14.jpg', keywords: ['animals'] },
-{ id: 15, url: 'img/15.jpg', keywords: ['animals'] },
-{ id: 16, url: 'img/16.jpg', keywords: ['animals'] },
-{ id: 17, url: 'img/17.jpg', keywords: ['animals'] },
-{ id: 18, url: 'img/18.jpg', keywords: ['animals'] },
+
+var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['Politic','Peoples'] },
+{ id: 2, url: 'img/2.jpg', keywords: ['Animales'] },
+{ id: 3, url: 'img/3.jpg', keywords: ['Animales','Cute','Peoples'] },
+{ id: 4, url: 'img/4.jpg', keywords: ['Animales'] },
+{ id: 5, url: 'img/5.jpg', keywords: ['Cute','Peoples'] },
+{ id: 6, url: 'img/6.jpg', keywords: ['Peoples'] },
+{ id: 7, url: 'img/7.jpg', keywords: ['Cute','Peoples'] },
+{ id: 8, url: 'img/8.jpg', keywords: ['Peoples'] },
+{ id: 9, url: 'img/9.jpg', keywords: ['Cute','Happy','Peoples'] },
+{ id: 10, url: 'img/10.jpg', keywords: ['Politic','Happy','Peoples'] },
+{ id: 11, url: 'img/11.jpg', keywords: ['Peoples'] },
+{ id: 12, url: 'img/12.jpg', keywords: ['Peoples'] },
+{ id: 13, url: 'img/13.jpg', keywords: ['Peoples'] },
+{ id: 14, url: 'img/14.jpg', keywords: ['Peoples'] },
+{ id: 15, url: 'img/15.jpg', keywords: ['Peoples'] },
+{ id: 16, url: 'img/16.jpg', keywords: ['Peoples','Happy'] },
+{ id: 17, url: 'img/17.jpg', keywords: ['Politic','Peoples'] },
+{ id: 18, url: 'img/18.jpg', keywords: ['Robots'] }
 ];
-
 
 _createMemes();
 gCurrMeme = _createCurrMeme();
@@ -125,9 +126,7 @@ function getIdxMemById(id){
 
 function setCurrMemeToNew(pickedMeme){
     gCurrMeme = pickedMeme; //all data are same
-    // gCurrMeme.id=gNextId++; //except for id. its a new editble meme
 }
-
 
 function addMemeToMems(){
     gCurrMeme.id=gNextId++;
@@ -140,6 +139,39 @@ function saveMemesToStorage() {
     saveToStorage(KEY_MEMES, gMemes)
 }
 
+// function getImgs() {
+//     return gImgs;
+// }
+
+function setGalleryFilter(filter){
+    gGalleryFilter = filter;
+}
+
+
+// var gKeywords = { 'Politic': 2, 'Peoples': 4,'Animales': 6,'Cute': 2,'Happy': 6 ,'Robots': 4};
+// var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['Politic','Peoples'] },
+
+function setGalleryFilter(filter){
+    gGalleryFilter = filter;
+}
+
 function getImgs() {
-    return gImgs;
+    if (!gGalleryFilter) return gImgs;
+    var sortedImgs = gImgs.filter((img)=>{
+            return img.keywords.includes(gGalleryFilter) 
+    });
+
+    if (!gImgs||!gImgs.length){
+        gImgs=[];
+    }
+
+    gKeywords[gGalleryFilter]++;
+
+    return sortedImgs;
+}
+
+function renderFilters(){
+//put in spans. set its font-sz
+    // document.getElementById ("table").text.style.fontSize
+
 }

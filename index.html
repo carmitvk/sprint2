@@ -32,11 +32,20 @@
     <main class="flex main-container">
 
         <section class="gallery-container ">
-            <!-- <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
+            <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
                             <option value="Politic">Politic</option>
-                            <option value="Animaly">Animaly</option>
+                            <option value="Animales">Animales</option>
                             <option value="Happy">Happy</option>
-            </select> -->
+                            <option value="Cute">Cute</option>
+                            <option value="Peoples">Peoples</option>
+                            <option value="Robots">Robots</option>
+            </select>
+            <div class="img-container">
+
+            </div>
+            <!-- <div>
+
+            </div> -->
         </section>
         <section class="editor-container">
             <div class="canvas-container flex">
@@ -44,7 +53,8 @@
                 </canvas>
             </div>
             <div class="control flex flex-col">
-                <input type="text" class="text-line" placeholder="Text" name="textLine" />
+                <input type="text" class="text-line" placeholder="Text" name="textLine" oninput="onInsertText(this)" />
+
                 <div class="line-control">
                     <button class="btn move-right" onclick="onMoveRight()" ontouchstart="onMoveRight()">
                         <img class="action-img" src="icons/right-arrow.png">
@@ -61,7 +71,7 @@
                     <button class="btn switch-focus" onclick="onSwitchFocus()" ontouchstart="onSwitchFocus()">
                         <img class="action-img" src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
                     </button>
-                    <button class="btn add-line" onclick="onAddLine()" ontouchstart="onAddLine()">
+                    <button class="btn add-line" onclick="createNewLine()" ontouchstart="createNewLine()">
                         <img class="action-img" src="icons/add.png">
                     </button>
                     <button class="btn delete-line" onclick="onRemoveLine()" ontouchstart="onRemoveLine()">

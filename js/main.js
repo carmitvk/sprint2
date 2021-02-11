@@ -85,8 +85,9 @@ function renderMemCanvases() {
                 ctx.textAlign = line.align;
                 var text = line.txt;
 
-                var x = line.x
-                var y = line.y
+                //correct ratio in % because the meme-canvas is not same size as editor-canvas. 
+                var x = (line.x/gElCanvas.width)*elMemeCanvs.width;
+                var y = (line.y/gElCanvas.height)*elMemeCanvs.height;
 
                 ctx.fillText(text, x, y)
                 ctx.strokeText(text, x, y)

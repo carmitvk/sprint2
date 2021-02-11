@@ -78,24 +78,25 @@ function renderCanVas() {
 
     //put into canvas
     document.querySelector('canvas').innerHTML = ''
-    var img = new Image()
+    var img = new Image();
+    img.onload = function (){
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+
+        currMeme.lines.forEach((line) => {
+            gCtx.lineWidth = 2
+            gCtx.strokeStyle = line.stroke;
+            gCtx.fillStyle = line.color;
+            gCtx.font = '' + line.fontSize + 'px ' + line.fontFamily;
+            gCtx.textAlign = line.align;
+            var text = line.txt;
+            var x =line.x
+            var y = line.y
+    
+            gCtx.fillText(text, x, y)
+            gCtx.strokeText(text, x, y)
+        });
+    }
     img.src = currMeme.selectedImgUrl;
-    console.log('img.src=',img.src,'currMeme.selectedImgUrl;=',currMeme.selectedImgUrl)
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-
-    currMeme.lines.forEach((line) => {
-        gCtx.lineWidth = 2
-        gCtx.strokeStyle = line.stroke;
-        gCtx.fillStyle = line.color;
-        gCtx.font = '' + line.fontSize + 'px ' + line.fontFamily;
-        gCtx.textAlign = line.align;
-        var text = line.txt;
-        var x =line.x
-        var y = line.y
-
-        gCtx.fillText(text, x, y)
-        gCtx.strokeText(text, x, y)
-    });
 }
 
 function onSwitchFocus() {
@@ -107,7 +108,27 @@ function onSwitchFocus() {
 }
 
 function onAddLine() {
+    var currMeme = getCurrMeme();
+    var txt='from Input';
+    var x =document.querySelector('.canvas-container').offsetWidth/2;
+    var y;
+    if (currMeme.lines.length === 0){
+        y=50;
+    }else if (currMeme.lines.length === 1){
+        y=document.querySelector('.canvas-container').offsetHeight+100;
+    } else if (currMeme.lines.length === 2){
+        y=document.querySelector('.canvas-container').offsetHeight/2;
+    }else {
+        y=currMeme.lines[currMeme.selectedLineIdx].y+50;
+        if (y>document.querySelector('.canvas-container').offsetHeight+100){//TODO check height
+            y=20;
+        }
+    }
 
+    var newLine = createLine(txt,x,y);
+    addLine(newLine); 
+    currMeme.selectedLineIdx = currMeme.lines.length-1;
+    renderCanVas();
 }
 
 function onMoveRight(){
@@ -195,7 +216,7 @@ function onSetColor() {
 }
 
 function onSaveLocally() {
-    saveLocallyCurrMeme();//???
+    saveLocallyCurrMeme();
 }
 
 function onFacebookPublish() {

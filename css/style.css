@@ -5,7 +5,9 @@
 body {
     margin: 0;
     font-size: 0.875rem;
-    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 @font-face {

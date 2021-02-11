@@ -32,7 +32,7 @@ gCurrMeme = _createCurrMeme();
 
 function _createMemes() {
     var memes = loadFromStorage(KEY_MEMES)
-    if (memes || memes.length) {
+    if (memes && memes.length) {
         //update next created index to start from last existing index in storage +1. 
         var maxIdx = 0;
         memes.forEach(meme => {
@@ -41,38 +41,59 @@ function _createMemes() {
             }
             gNextId = maxIdx + 1;
         });
+    }else{
+        memes=[];
     }
     gMemes = memes;
 }
 
 function _createCurrMeme() {
     return {
-        id: gNextId++, selectedImgId: 3, selectedImgUrl: 'img/3.jpg', selectedLineIdx: 0, lines: [
-            {
-                txt: 'I never eat Falafel',
-                size: 20,
-                align: 'left',
-                color: 'red',
-                stroke: 'black',
-                fontSize: 40,
-                fontFamily: 'Arial',
-                x: 100,
-                y: 100
-            },
-            {
-                txt: 'I am second line',
-                size: 20,
-                align: 'left',
-                color: 'red',
-                stroke: 'black',
-                fontSize: 40,
-                fontFamily: 'Arial',
-                x: 100,
-                y: 400
-            }
+        id: gNextId++, selectedImgId: 2, selectedImgUrl: 'img/2.jpg', selectedLineIdx: 0, lines: [
+            // {
+            //     txt: 'I never eat Falafel',
+            //     size: 20,
+            //     align: 'left',
+            //     color: 'red',
+            //     stroke: 'black',
+            //     fontSize: 40,
+            //     fontFamily: 'Arial',
+            //     x: 100,
+            //     y: 100
+            // },
+            // {
+            //     txt: 'I am second line',
+            //     size: 20,
+            //     align: 'left',
+            //     color: 'red',
+            //     stroke: 'black',
+            //     fontSize: 40,
+            //     fontFamily: 'Arial',
+            //     x: 100,
+            //     y: 400
+            // }
         ]
     }
 }
+
+function addLine(line){
+    gCurrMeme.lines.push(line);
+}
+
+function createLine(txt,x,y,size=20,align='center',color='blue',stroke='black',fontSize=40,fontFamily='Arial'){
+    return {
+        txt: txt,
+        size: size,
+        align: align,
+        color: color,
+        stroke:stroke,
+        fontSize:fontSize,
+        fontFamily:fontFamily,
+        x:x,
+        y:y
+    }
+}
+
 
 function getMeme() {
     return gMemes;
@@ -88,14 +109,17 @@ function setCurrImg(id, url) {
 }
 
 function saveLocallyCurrMeme() {
-    saveToStorage(KEY_MEME, gCurrMeme);
-    //????
+    addMemeToMems();
+    saveMemeToStorage();
 }
 
 
+function addMemeToMems(){
+    gMemes.push(gCurrMeme);
+}
 
 function saveMemeToStorage() {
-    saveToStorage(KEY_MEME, gMemes)
+    saveToStorage(KEY_MEMES, gMemes)
 }
 
 function getImgs() {

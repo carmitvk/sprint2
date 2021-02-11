@@ -70,7 +70,8 @@ function renderMemCanvases() {
                 ctx.lineWidth = 2
                 ctx.strokeStyle = line.stroke;
                 ctx.fillStyle = line.color;
-                ctx.font = '' + line.fontSize + 'px ' + line.fontFamily;
+                var fontSz = (line.x/gElCanvas.width)*line.fontSize;
+                ctx.font = '' + fontSz + 'px ' + line.fontFamily;
                 ctx.textAlign = line.align;
                 var text = line.txt;
 

@@ -30,17 +30,6 @@ function onNavClicked(el, clsName) {
     element.style.display = 'flex';
 }
 
-
-function drawText(text, x, y) {
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = gColor
-    gCtx.font = '40px Arial'
-    gCtx.textAlign = 'center'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
-}
-
 function renderGallery() {
     var imgs = getImgs();
     var strHtml = imgs.map(img => {
@@ -131,10 +120,18 @@ function onPickMeme(memeId) {
     //Set it as a new current Meme
     setCurrMemeToNew(pickedMeme);
 
+    setDataControls(pickedMeme);
+
     //Editor pressed, Gallery not //TODO
 
     //print data on canvas
     renderCanVas();
+}
+
+function setDataControls(pickedMeme){
+    document.querySelector('.set-color').value = pickedMeme.lines[pickedMeme.selectedLineIdx].color;//carmit
+    document.querySelector('.switch-stroke').value = pickedMeme.lines[pickedMeme.selectedLineIdx].stroke;
+    document.querySelector('.font-family').value = pickedMeme.lines[pickedMeme.selectedLineIdx].fontFamily;
 }
 
 function renderCanVas() {

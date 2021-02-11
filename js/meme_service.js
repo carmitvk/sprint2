@@ -80,7 +80,7 @@ function addLine(line){
     gCurrMeme.lines.push(line);
 }
 
-function createLine(txt,x,y,size=20,align='center',color='blue',stroke='black',fontSize=40,fontFamily='Arial'){
+function createLine(txt,x,y,size=20,align='center',color='blue',stroke='black',fontSize=30,fontFamily='Arial'){
     return {
         txt: txt,
         size: size,

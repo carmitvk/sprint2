@@ -31,6 +31,8 @@ function onNavClicked(el, clsName) {
 }
 
 function onMenuClicked(){
+
+    console.log('on onMenuClicked');
     var element = document.querySelector('.main-nav');
     element.classList.toggle('menu-open');
 

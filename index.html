@@ -21,7 +21,7 @@
                     <a id="editor-tab" class="sub-nav flex center" onclick="onNavClicked(this, 'editor-container')">Editor</a>
                 </li>
                 <li class="nav-btn">
-                    <a class="sub-nav flex center" onclick="onNavClicked(this, 'memes-container')">Memes</a>
+                    <a id="memes-tab" class="sub-nav flex center" onclick="onNavClicked(this, 'memes-container')">Memes</a>
                 </li>
             </ul>
 
@@ -40,11 +40,6 @@
         <section class="editor-container">
             <div class="canvas-container flex">
                 <canvas id="meme-canvas" class="flex" height="500" width="500">
-                    <!-- height="553" width="543" -->
-                    <!-- onclick="draw(event)"  -->
-                    <!-- onmousedown="mouseDown(event)" onmousemove="mouseMove(event)" onmouseup="mouseUp()" 
-                                                        ontouchstart="mouseDown(event)" ontouchmove="mouseMove(event)" ontouchend="mouseUp()" -->
-                    >
                 </canvas>
             </div>
             <div class="control flex flex-col">
@@ -100,12 +95,6 @@
                     stroke:<input type="color" class="switch-stroke" placeholder="switch-stroke"
                         onchange="onTextStroke()" name="switchStroke" required />
 
-                    <!-- <button class="btn switch-stroke" onclick="onTextStroke()">
-                        <img class="action-img" src="icons/text stroke.png">
-                    </button> -->
-                    <!-- <button class="btn switch-color" onclick="onSetColor()">
-                        <img class="action-img" src="icons/paint-board-and-brush.png">
-                    </button> -->
                     color:<input type="color" class="set-color" placeholder="set-color" onchange="onSetColor()"
                         name="setColor" required />
                 </div>
@@ -121,13 +110,12 @@
                         <img class="action-img" src='icons/download.png'>
                     </button>
                     <!-- <button class="btn clean-canvas" onclick="onCleanCanvas()">
-                        
                     </button> -->
                 </div>
             </div>
         </section>
         <section class="memes-container">
-            MEMS
+            MEMES
         </section>
     </main>
     <footer class="flex flex-col center">

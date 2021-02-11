@@ -55,9 +55,7 @@ body {
 }
 
 .sub-nav-press.sub-nav{ 
-    border-bottom: 4px solid #af5912;
     box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0  #af5912;
-    /* color: rgb(75, 138, 75); */
 }
 
 .main-nav{
@@ -78,7 +76,6 @@ li:hover{
     width: 100%;
     justify-content:center;
     background-color: #ad6b36;
-
 }
 
 .editor-container{

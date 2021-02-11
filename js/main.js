@@ -99,7 +99,13 @@ function onPickImg(id, url) {
     //Save to current Meme
     setCurrImg(id, url);
 
-    //Editor pressed, Gallery not //TODO
+    //Editor pressed, Gallery not 
+    var elements = document.querySelectorAll('.sub-nav-press.sub-nav');
+    elements.forEach(element => {
+        element.classList.remove('sub-nav-press');
+    });
+    element = document.querySelector('#editor-tab');
+    element.classList.add('sub-nav-press');
 
     //print data on canvas
     renderCanVas();
@@ -123,14 +129,21 @@ function onPickMeme(memeId) {
 
     setDataControls(pickedMeme);
 
-    //Editor pressed, Gallery not //TODO
+    //Editor pressed, Gallery not 
+    var elements = document.querySelectorAll('.sub-nav-press.sub-nav');
+    elements.forEach(element => {
+        element.classList.remove('sub-nav-press');
+    });
+    element = document.querySelector('#editor-tab');
+    element.classList.add('sub-nav-press');
+    
 
     //print data on canvas
     renderCanVas();
 }
 
 function setDataControls(pickedMeme){
-    document.querySelector('.set-color').value = pickedMeme.lines[pickedMeme.selectedLineIdx].color;//carmit
+    document.querySelector('.set-color').value = pickedMeme.lines[pickedMeme.selectedLineIdx].color;
     document.querySelector('.switch-stroke').value = pickedMeme.lines[pickedMeme.selectedLineIdx].stroke;
     document.querySelector('.font-family').value = pickedMeme.lines[pickedMeme.selectedLineIdx].fontFamily;
 }

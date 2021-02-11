@@ -37,10 +37,17 @@ function onMenuClicked(){
     element = document.querySelector('main');
     element.classList.toggle('menu-open');
 
+ 
+
+    
+
+
+
     var element = document.querySelector('.main-nav');
     element.style.display = 'flex';
 
     element = document.querySelector('.menu-btn');
+    element.classList.toggle('menu-open')//???
     if (element.innerHTML === 'X'){
         element.innerHTML = '☰';
     }else{

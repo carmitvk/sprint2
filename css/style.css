@@ -71,8 +71,8 @@ li:hover{
 
 .menu-btn{
     display:none;
-    height: 20px;
-    width: 20px;
+    height: 35px;
+    width: 35px;
     font-size: 1.1em;
     align-items: center;
     background-color: rgb(245, 135, 9);
@@ -144,8 +144,6 @@ canvas{
 .action-img{
     height: 90%;
     width: 80%;
-    /* height: 30px;
-    width: 50px; */
 }
 
 footer{
@@ -210,6 +208,7 @@ footer{
 
     .menu-btn{
         display: flex;
+
     }
 
     main.menu-open{
@@ -219,6 +218,11 @@ footer{
 
     .main-nav{
         display: none!important;
+    }
+
+    .menu-btn.menu-open{
+        height: 20px;
+        width: 20px;
     }
     .main-nav.menu-open{
         display: flex!important;

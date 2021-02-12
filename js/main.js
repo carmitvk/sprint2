@@ -69,7 +69,7 @@ function renderGallery() {
 function renderMems() {
     var memes = getMemes();
     var strHtmls = memes.map(meme => {
-        return `<canvas id="meme-canvas${meme.id}" class="flex" onclick="onPickMeme(${meme.id})" height="250" width="250">    
+        return `<canvas id="meme-canvas${meme.id}" class="flex" onclick="onPickMeme(${meme.id})" height="200" width="200">    
                 </canvas>`
     });
     var elMemes = document.querySelector('.memes-container');

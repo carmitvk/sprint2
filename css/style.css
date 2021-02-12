@@ -70,6 +70,9 @@ body {
     box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0  #af5912;
 }
 
+/* .pressed{
+    box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0  ;
+} */
 .main-nav{
     height: 100%;
     
@@ -123,7 +126,23 @@ li:hover{
     display: inline-block;
 }
 
+.memes-container >*{
+    margin: 0.1%;
+    order:1;
+    margin: 10px;
+    box-shadow: 5px 5px 15px 5px #1a1612;
+}
+.img-container >*{
+    margin: 0.1%;
+    order:1;
+    margin: 10px;
+    box-shadow: 5px 5px 15px 5px #1a1612;
+}
 
+.filter-gallery{
+    box-shadow: 5px 5px 15px 5px #1a1612;
+    margin-bottom: 5px;
+}
 
 .gallery-container, .memes-container{
     display: none;
@@ -131,7 +150,6 @@ li:hover{
     flex-wrap: wrap;
     width: 100%;
     justify-content:center;
-    background-color: #ad6b36;
 }
 
 .editor-container{
@@ -150,7 +168,8 @@ li:hover{
 
    
 canvas{
-    background-color: rgb(206, 133, 65);
+    /* background-color: rgb(206, 133, 65); */
+    box-shadow: 5px 5px 15px 5px #1a1612;
     order:1;
 }
 
@@ -174,17 +193,13 @@ canvas{
 }
 
 
-.memes-container *>{
-    margin: 10px auto 10px 20px;
-    background-color: rgb(206, 133, 65);
-    order:1;
-}
+
 
 footer{
     background-color:#292929;
     justify-content: space-around;
     color:rgb(247, 238, 238);
-    flex-grow: 1;
+    
 }
 .logo-ftr{
     height: 40%;
@@ -196,9 +211,7 @@ footer{
     height: 80%;
 }
 
-.lines-color{
-    background-color: #d8935a;
-}
+
 
 .text-line{
     /* height: 30px;
@@ -235,17 +248,28 @@ footer{
     border-radius: 15%;
     line-height: 30px;
     outline: none;
+    /* -webkit-box-shadow: 5px 5px 15px 5px #c99d0f;  */
+    box-shadow: 5px 5px 15px 5px #1a1612;
+
+    /* -webkit-box-shadow: 5px 0px 17px -1px #000000; 
+    box-shadow: 5px 0px 17px -1px #000000; */
 }
 
-
-/* .controls{
-
-} */
+.lines-color{
+    /* background-color: #d8935a; */
+    /* -webkit-box-shadow: 5px 5px 15px 5px #c99d0f; 
+    box-shadow: 5px 5px 15px 5px #1a1612; */
+    /* border:1px solid gray; */
+}
 
 .control1{
     flex-grow: 1;
     justify-content: center;
     margin-bottom: 20px;
+    background-color: rgb(212, 199, 189);
+    /* -webkit-box-shadow: 5px 5px 15px 5px #c99d0f; */
+    -webkit-box-shadow: 5px 5px 15px 5px #e6862c;
+    box-shadow: 5px 5px 15px 5px #1a1612; 
 }
 .control2{
     flex-grow: 2;
@@ -255,6 +279,7 @@ footer{
     /* border: 1px solid rgb(165, 161, 161); */
     /* border-radius: 5%; */
     /* background-color: rgb(184, 117, 73); */
+    -webkit-box-shadow: 5px 5px 15px 5px #e6862c;
 }
 .control3{
     flex-grow: 2;
@@ -262,7 +287,9 @@ footer{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid rgb(165, 161, 161);
+    /* border: 1px solid rgb(165, 161, 161); */
+        -webkit-box-shadow: 5px 5px 15px 5px #e6862c; 
+    /* box-shadow: 5px 5px 15px 5px #1a1612; */
 }
 .control4{
     flex-grow: 2;
@@ -270,7 +297,8 @@ footer{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid rgb(165, 161, 161);
+    /* border: 1px solid rgb(165, 161, 161); */
+    -webkit-box-shadow: 5px 5px 15px 5px #e6862c;
 }
 .control5{
     flex-grow: 2;
@@ -278,7 +306,8 @@ footer{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid rgb(165, 161, 161);
+    /* border: 1px solid rgb(165, 161, 161); */
+    -webkit-box-shadow: 5px 5px 15px 5px #e6862c;
 }
 .control6{
     flex-grow: 4;
@@ -286,7 +315,8 @@ footer{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid rgb(165, 161, 161);
+    /* border: 1px solid rgb(165, 161, 161); */
+    -webkit-box-shadow: 5px 5px 15px 5px #e6862c;
 }
 
 
@@ -348,7 +378,6 @@ footer{
 
     .menu-btn{
         display: flex;
-
     }
     .main-nav{
         display: none;
@@ -384,6 +413,13 @@ footer{
 
     .canvas-container{
         justify-content: center;
+    }
+
+    main{
+        flex-grow: ;
+    }
+    .main-container {
+        width: 100%;
     }
     .controls{
         padding:12%;

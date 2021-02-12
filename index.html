@@ -56,25 +56,25 @@
                 <input type="text" class="text-line" placeholder="Text" name="textLine" oninput="onInsertText(this)" />
 
                 <div class="line-control">
-                    <button class="btn move-right" onclick="onMoveRight()" ontouchstart="onMoveRight()">
-                        <img class="action-img" src="icons/right-arrow.png">
+                    <button class="btn move-right increase-move-icon" onclick="onMoveRight()" ontouchstart="onMoveRight()">⯮
+                        <!-- <img class="action-img" src="icons/right-arrow.png"> -->
                     </button>
-                    <button class="btn move-left" onclick="onMoveLeft()" ontouchstart="onMoveLeft()">
-                        <img class="action-img" src="icons/arrow-left.png">
+                    <button class="btn move-left increase-move-icon" onclick="onMoveLeft()" ontouchstart="onMoveLeft()">⯬
+                        <!-- <img class="action-img" src="icons/arrow-left.png"> -->
                     </button>
-                    <button class="btn move-up" onclick="onMoveUp()" ontouchstart="onMoveUp()">
-                        <img class="action-img" src="icons/up.png">
+                    <button class="btn move-up increase-move-icon" onclick="onMoveUp()" ontouchstart="onMoveUp()">⯭
+                        <!-- <img class="action-img" src="icons/up.png"> -->
                     </button>
-                    <button class="btn move-down" onclick="onMoveDown()" ontouchstart="onMoveDown()">
-                        <img class="action-img" src="icons/down.png">
+                    <button class="btn move-down increase-move-icon" onclick="onMoveDown()" ontouchstart="onMoveDown()">⯯
+                        <!-- <img class="action-img" src="icons/down.png"> -->
                     </button>
-                    <button class="btn switch-focus" onclick="onSwitchFocus()" ontouchstart="onSwitchFocus()">
-                        <img class="action-img" src="icons/up-and-down-opposite-double-arrows-side-by-side.png">
+                    <button class="btn switch-focus increase-icon" onclick="onSwitchFocus()" ontouchstart="onSwitchFocus()">⬍
+                        <!-- <img class="action-img" src="icons/up-and-down-opposite-double-arrows-side-by-side.png"> -->
                     </button>
                     <button class="btn add-line" onclick="createNewLine()" ontouchstart="createNewLine()">
                         <img class="action-img" src="icons/add.png">
                     </button>
-                    <button class="btn delete-line" onclick="onRemoveLine()" ontouchstart="onRemoveLine()">
+                    <button class="btn action-imgdelete-line" onclick="onRemoveLine()" ontouchstart="onRemoveLine()">
                         <img class="action-img" src="icons/trash.png">
                     </button>
                 </div>
@@ -109,14 +109,23 @@
                 </div>
                 <div class="save-area">
                     
-                    <button class="btn save" onclick="onSaveLocally()" ontouchstart="onSaveLocally()">
+                    <!-- <button class="btn upload" title="upload from computer" onclick="onImgInput(event)" ontouchstart="onImgInput(event)">
+                        <img class="action-img" src='icons/folder.png'>
+                    </button> -->
+
+                    <button class="btn save" title="Save to memes" onclick="onSaveLocally()" ontouchstart="onSaveLocally()">
                         <img class="action-img" src='icons/local-save.png'>
                     </button>
-                    <button class="btn facebook" onclick="onFacebookPublish()" ontouchstart="onFacebookPublish()">
-                        <img class="action-img" src='icons/facebook-logo.png'>
-                    </button>
-                    <a class="btn download" href="#" onclick="onDownload(this)" ontouchstart="onDownload(this)" download="">
-                        <img class="action-img" src='icons/download.png'>
+
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="btn action-img" type="submit"><img class="action-img" src='icons/facebook-logo.png'></button>
+                        <!-- <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a> -->
+                        <span class="share-container"></span>
+                      </form>
+
+                    <a class="btn download" title="Download to your computer" href="#" onclick="onDownload(this)" ontouchstart="onDownload(this)" download="">
+                        <img class="btn action-img download-img" src='icons/download.png'>
                       </a>
                 </div>
             </div>

@@ -236,17 +236,6 @@ function createNewLine(){
     currMeme.selectedLineIdx = currMeme.lines.length - 1;
 }
 
-// function onUpdateLine(txt) {
-//     var currMeme = getCurrMeme();
-//     // var txt = document.querySelector('input[name=textLine]').value;
-
-//     var x = currMeme.lines[currMeme.selectedLineIdx].txt= txt;
-//     // var newLine = createLine(txt, x, y);
-//     // addLine(newLine);
-//     // currMeme.selectedLineIdx = currMeme.lines.length - 1;
-//     renderCanVas();
-// }
-
 function onMoveRight() {
     var currMeme = getCurrMeme();
     if (currMeme.lines[currMeme.selectedLineIdx]){
@@ -361,10 +350,6 @@ function onSaveLocally() {
     renderMems();
 }
 
-function onFacebookPublish() {
-
-}
-
 function onDownload(elLink) {
     const data = gElCanvas.toDataURL();
     elLink.href = data;
@@ -374,4 +359,11 @@ function onDownload(elLink) {
 function onSetGalleryFilter(filter){
     setGalleryFilter(filter);
     renderGallery();
+}
+
+// carmit
+function renderImg(){
+    setCurrImg(Date.now() , getLoadImgUrl()); //timestamp as id
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+    // renderCanVas();
 }

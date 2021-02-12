@@ -1,5 +1,7 @@
 'use strict'
 
+var gLoadImgUrl;
+
 // on submit call to this function
 function uploadImg(elForm, ev) {
     ev.preventDefault();
@@ -32,8 +34,6 @@ function doUploadImg(elForm, onSuccess) {
     })
 }
 
-
-
 // The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
 function onImgInput(ev) {
     loadImageFromInput(ev, renderImg)
@@ -58,17 +58,19 @@ function loadImageFromInput(ev, onImageReady) {
 
     reader.onload = function (event) {
         var img = new Image()
-        img.src = 'img/2.jpg'; //event.target.result
+        img.src = 'img/2.jpg';//event.target.result; 
         img.onload = onImageReady.bind(null, img)
-        // gImg = img
+        gLoadImgUrl = img.src
     }
-    console.log(ev.target.files[0]);
-    reader.readAsDataURL(ev.target.files[0])
+    reader.readAsDataURL(ev.target.files[0]);
 }
 
 
+function downloadImg(elLink) {
+    var imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
 
-
-// function renderImg(img) {
-//     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-// }
+function getLoadImgUrl(){
+    return gLoadImgUrl
+}

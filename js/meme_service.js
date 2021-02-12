@@ -139,10 +139,6 @@ function saveMemesToStorage() {
     saveToStorage(KEY_MEMES, gMemes)
 }
 
-// function getImgs() {
-//     return gImgs;
-// }
-
 function setGalleryFilter(filter){
     gGalleryFilter = filter;
 }

@@ -143,18 +143,38 @@ canvas{
     order:1;
 }
 
-.action-img{
-    height: 90%;
-    width: 80%;
-}
-
 footer{
     background-color:#292929;
     justify-content: space-around;
+    color:rgb(247, 238, 238);
 }
 
 
 
+
+.action-img{
+    height: 70%;
+    width: 60%;
+}
+.increase-move-icon{
+    font-size:25px;
+}
+
+.increase-icon{
+    font-size:30px;
+}
+
+.add-line{
+    height: 70%;
+    width: 60%;
+}
+
+/* .download-img{
+    height: 20px;
+    width: 20px;
+    font-size:10px;
+    line-height: 20px;
+} */
 
 .btn{
     cursor: pointer;

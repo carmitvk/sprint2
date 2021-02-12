@@ -160,7 +160,6 @@ canvas{
     /* margin-top: 20px; */
     flex-grow:1;
     flex-basis: 50%;
-    background-color: red;
     align-self: center;
 }
 
@@ -197,11 +196,15 @@ footer{
     height: 80%;
 }
 
+.lines-color{
+    background-color: #d8935a;
+}
+
 .text-line{
     /* height: 30px;
     width: 400px; */
     width:100%;
-    background-color: #d8935a;
+    /* background-color: #d8935a; */
     border-radius: 4%;
     line-height: 30px;
     outline: none;
@@ -249,7 +252,9 @@ footer{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid rgb(165, 161, 161);
+    /* border: 1px solid rgb(165, 161, 161); */
+    /* border-radius: 5%; */
+    /* background-color: rgb(184, 117, 73); */
 }
 .control3{
     flex-grow: 2;
@@ -379,6 +384,16 @@ footer{
 
     .canvas-container{
         justify-content: center;
+    }
+    .controls{
+        padding:12%;
+    }
+    .logo-ftr{
+        width: 130px;
+        justify-content: center;
+    }
+    .ftr-coffee{
+        align-content: center;
     }
     
 }

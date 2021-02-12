@@ -55,10 +55,10 @@
             </div>
             <div class="controls flex flex-col no-wrap">
                 <div class="control1 flex">
-                    <input type="text" class="text-line" placeholder="Text" name="textLine"
+                    <input type="text" class="text-line lines-color" placeholder="Text" name="textLine"
                         oninput="onInsertText(this)" />
                 </div>
-                <div class="control2 flex">
+                <div class="control2 lines-color flex">
                     <button class="btn switch-focus increase-icon flex center" onclick="onSwitchFocus()"
                         ontouchstart="onSwitchFocus()">⬍
                     </button>
@@ -69,7 +69,7 @@
                         <img class="action-img" src="icons/trash.png">
                     </button>
                 </div>
-                <div class="control3 flex">
+                <div class="control3 lines-color flex">
                     <button class="btn move-left increase-move-icon flex center" onclick="onMoveLeft()"
                         ontouchstart="onMoveLeft()">⯬
                     </button>
@@ -82,7 +82,7 @@
                         ontouchstart="onMoveRight()">⯮
                     </button>
                 </div>
-                <div class="control4 flex">
+                <div class="control4 lines-color flex">
                     <button class="btn increase-font" onclick="onIncreaseFont()" ontouchstart="onIncreaseFont()">
                         <img class="action-img" src="icons/increase font - icon.png">
                     </button>
@@ -99,7 +99,7 @@
                         <img class="action-img" src="icons/align-to-right.png">
                     </button>
                 </div>
-                <div class="control5 flex">
+                <div class="control5 lines-color flex">
                     <select class="btn font-family" onchange="onSetFontFamily(this.value)" aria-label=" ">
                         <option value="Arial">Arial</option>
                         <option value="David">David</option>
@@ -112,7 +112,7 @@
                     color:<input type="color" class="btn set-color" placeholder="set-color" onchange="onSetColor()"
                         name="setColor" required />
                 </div>
-                <div class="control6 flex">
+                <div class="control6 lines-color flex">
 
                     <!-- <button class="btn upload" title="upload from computer" onclick="onImgInput(event)" ontouchstart="onImgInput(event)">
                         <img class="action-img" src='icons/folder.png'>
@@ -144,7 +144,7 @@
     </main>
     <footer class="flex flex-col center">
         <div class="logo-ftr flex"><img class="logo-img flex center " src="icons/LOGO.png"></div>
-        <div class="flex">@coffee carmit vaknin 2021</div>
+        <div class="flex ftr-coffee">@coffee carmit vaknin 2021</div>
     </footer>
 
 

@@ -8,7 +8,8 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    /* width:100vw; */
+    width:100vw;
+    background-color: rgb(233, 162, 95);
 }
 
 /* @font-face { */
@@ -25,6 +26,14 @@ body {
     /* box-shadow: inset 0 -6px 0 #1e1e1e; */
     max-width:100%;
     justify-content: space-between;
+}
+.hdr-content{
+    width: 80%;
+    margin: 0 auto;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
 }
 
 .sub-nav{
@@ -44,15 +53,17 @@ body {
     flex-grow: 1;
     /* background-color: #292929; */
     color:white;
+    cursor: pointer;
 }
 
 .logo{
-    height: 4rem;
+    height: 100%;
     width: 10.5rem;
+    justify-content: center;
 }
 .logo-img{
     width:100%;
-    /* object-fit: cover; */
+    height: 80%;
 }
 
 .sub-nav-press.sub-nav{ 
@@ -60,8 +71,14 @@ body {
 }
 
 .main-nav{
-    /* flex-basis: 52%; */
     height: 100%;
+    
+    /* margin-left: auto; */
+    padding-right: 5%;
+    /* to put in right */
+    margin: 0 0 0 auto;
+    padding: 0;
+    list-style-type: none;
 }
 
 li:hover{
@@ -91,15 +108,20 @@ li:hover{
 
 
 .main-container {
-    max-width: 980px;
+    width: 80%;
     margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
-
+.meme-canvas{
+    display:flex;
+    align-self: center;
+}
 
 .download{   
     display: inline-block;
 }
-
 
 
 
@@ -114,10 +136,12 @@ li:hover{
 
 .editor-container{
     display: none;
+    align-items: center;
+    width:100%;
+    margin: 2px auto 2px auto;
 }
 
 .one-img, .one-meme{
-    /* flex-basis: 10%; */
     margin: 5px;
     max-width:200px;
     max-height:200px;
@@ -126,16 +150,30 @@ li:hover{
 
    
 canvas{
-    margin: 10px auto 10px 20px;
     background-color: rgb(206, 133, 65);
     order:1;
 }
 
 .canvas-container{
-    background-color: rgb(252, 251, 250);
     height: 70vh;
-    width: 450px;
+    /* width: 350px; */
+    /* margin-top: 20px; */
+    flex-grow:1;
+    flex-basis: 50%;
+    background-color: red;
+    align-self: center;
 }
+
+.controls{
+    height: 70vh;
+    /* width: 350px; */
+    /* margin-top: 20px; */
+    flex-grow:1;
+    flex-basis: 50%;
+    padding: 5%;
+    align-self: center;
+}
+
 
 .memes-container *>{
     margin: 10px auto 10px 20px;
@@ -147,10 +185,27 @@ footer{
     background-color:#292929;
     justify-content: space-around;
     color:rgb(247, 238, 238);
+    flex-grow: 1;
+}
+.logo-ftr{
+    height: 40%;
+    width: 10.5rem;
+    justify-content: center;
+}
+.logo-img{
+    width:100%;
+    height: 80%;
 }
 
-
-
+.text-line{
+    /* height: 30px;
+    width: 400px; */
+    width:100%;
+    background-color: #d8935a;
+    border-radius: 4%;
+    line-height: 30px;
+    outline: none;
+}
 
 .action-img{
     height: 70%;
@@ -169,13 +224,6 @@ footer{
     width: 60%;
 }
 
-/* .download-img{
-    height: 20px;
-    width: 20px;
-    font-size:10px;
-    line-height: 20px;
-} */
-
 .btn{
     cursor: pointer;
     height: 30px;
@@ -184,14 +232,79 @@ footer{
     border-radius: 15%;
     line-height: 30px;
     outline: none;
-
 }
 
+
+/* .controls{
+
+} */
+
+.control1{
+    flex-grow: 1;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.control2{
+    flex-grow: 2;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid rgb(165, 161, 161);
+}
+.control3{
+    flex-grow: 2;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid rgb(165, 161, 161);
+}
+.control4{
+    flex-grow: 2;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid rgb(165, 161, 161);
+}
+.control5{
+    flex-grow: 2;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid rgb(165, 161, 161);
+}
+.control6{
+    flex-grow: 4;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid rgb(165, 161, 161);
+}
+
+
+.facebook, .download, .save{
+    width: 70px;
+    height: 40px;
+}
+
+
+
+.center{
+    justify-content: space-between;
+    align-items: center;
+}
 
 .wrap{
     flex-wrap: wrap;
 }
-    
+   
+.no-wrap{
+    flex-wrap: none;
+}
+
 .flex {
     display: flex;
 }
@@ -218,11 +331,11 @@ footer{
     text-transform: capitalize;
 }
     
-.clean-list {
+/* .clean-list {
     margin: 0;
     padding: 0;
     list-style-type: none;
-}
+} */
 
 
 
@@ -232,14 +345,17 @@ footer{
         display: flex;
 
     }
+    .main-nav{
+        display: none;
+    }
 
     main.menu-open{
         background-color: rgb(206, 134, 75);
         opacity:0.5
     }
 
-    /* .main-nav{
-        display: none!important;
+    /* .hdr{
+        height: 400px;
     } */
 
     .menu-btn.menu-open{
@@ -261,7 +377,8 @@ footer{
     height: 100%;
     }
 
-
-
-
+    .canvas-container{
+        justify-content: center;
+    }
+    
 }

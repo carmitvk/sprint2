@@ -11,65 +11,56 @@
 
 <body onload="init()">
     <header class="hdr flex center">
-        <div class="hdr-content main-container flex">
-            <div class="logo"><img class="logo-img" src="icons/LOGO.png"></div>
-            <ul class="main-nav clean-list flex">
+        <div class="hdr-content flex">
+            <div class="logo flex">
+                <img class="logo-img" src="icons/LOGO.png">
+            </div>
+            <ul class="main-nav  flex">
                 <li class="nav-btn">
-                    <a id="gallery-tab" class="sub-nav flex center" onclick="onNavClicked(this, 'gallery-container')">Gallery</a>
+                    <a id="gallery-tab" class="sub-nav flex center"
+                        onclick="onNavClicked(this, 'gallery-container')">Gallery</a>
                 </li>
                 <li class="nav-btn">
-                    <a id="editor-tab" class="sub-nav flex center" onclick="onNavClicked(this, 'editor-container')">Editor</a>
+                    <a id="editor-tab" class="sub-nav flex center"
+                        onclick="onNavClicked(this, 'editor-container')">Editor</a>
                 </li>
                 <li class="nav-btn">
-                    <a id="memes-tab" class="sub-nav flex center" onclick="onNavClicked(this, 'memes-container')">Memes</a>
+                    <a id="memes-tab" class="sub-nav flex center"
+                        onclick="onNavClicked(this, 'memes-container')">Memes</a>
                 </li>
             </ul>
 
         </div>
-        <button class="menu-btn" onclick="onMenuClicked()" >☰</button>
+        <button class="menu-btn" onclick="onMenuClicked()">☰</button>
         <!-- <button class="menu-btn" onclick="onMenuClicked()" ontouchstart="onMenuClicked()">☰</button> -->
     </header>
     <main class="flex main-container">
 
         <section class="gallery-container ">
             <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
-                            <option value="Politic">Politic</option>
-                            <option value="Animales">Animales</option>
-                            <option value="Happy">Happy</option>
-                            <option value="Cute">Cute</option>
-                            <option value="Peoples">Peoples</option>
-                            <option value="Robots">Robots</option>
+                <option value="Politic">Politic</option>
+                <option value="Animales">Animales</option>
+                <option value="Happy">Happy</option>
+                <option value="Cute">Cute</option>
+                <option value="Peoples">Peoples</option>
+                <option value="Robots">Robots</option>
             </select>
             <div class="img-container">
-
             </div>
-            <!-- <div>
-
-            </div> -->
         </section>
-        <section class="editor-container">
+        <section class="editor-container flex wrap">
             <div class="canvas-container flex">
-                <canvas id="meme-canvas" class="flex" height="500" width="500">
+                <canvas id="meme-canvas" class="flex" height="400" width="400">
                 </canvas>
             </div>
-            <div class="control flex flex-col">
-                <input type="text" class="text-line" placeholder="Text" name="textLine" oninput="onInsertText(this)" />
-
-                <div class="line-control">
-                    <button class="btn move-right increase-move-icon" onclick="onMoveRight()" ontouchstart="onMoveRight()">⯮
-                        <!-- <img class="action-img" src="icons/right-arrow.png"> -->
-                    </button>
-                    <button class="btn move-left increase-move-icon" onclick="onMoveLeft()" ontouchstart="onMoveLeft()">⯬
-                        <!-- <img class="action-img" src="icons/arrow-left.png"> -->
-                    </button>
-                    <button class="btn move-up increase-move-icon" onclick="onMoveUp()" ontouchstart="onMoveUp()">⯭
-                        <!-- <img class="action-img" src="icons/up.png"> -->
-                    </button>
-                    <button class="btn move-down increase-move-icon" onclick="onMoveDown()" ontouchstart="onMoveDown()">⯯
-                        <!-- <img class="action-img" src="icons/down.png"> -->
-                    </button>
-                    <button class="btn switch-focus increase-icon" onclick="onSwitchFocus()" ontouchstart="onSwitchFocus()">⬍
-                        <!-- <img class="action-img" src="icons/up-and-down-opposite-double-arrows-side-by-side.png"> -->
+            <div class="controls flex flex-col no-wrap">
+                <div class="control1 flex">
+                    <input type="text" class="text-line" placeholder="Text" name="textLine"
+                        oninput="onInsertText(this)" />
+                </div>
+                <div class="control2 flex">
+                    <button class="btn switch-focus increase-icon flex center" onclick="onSwitchFocus()"
+                        ontouchstart="onSwitchFocus()">⬍
                     </button>
                     <button class="btn add-line" onclick="createNewLine()" ontouchstart="createNewLine()">
                         <img class="action-img" src="icons/add.png">
@@ -78,7 +69,20 @@
                         <img class="action-img" src="icons/trash.png">
                     </button>
                 </div>
-                <div class="text-design">
+                <div class="control3 flex">
+                    <button class="btn move-left increase-move-icon flex center" onclick="onMoveLeft()"
+                        ontouchstart="onMoveLeft()">⯬
+                    </button>
+                    <button class="btn move-up increase-move-icon flex center" onclick="onMoveUp()" ontouchstart="onMoveUp()">⯭
+                    </button>
+                    <button class="btn move-down increase-move-icon flex center" onclick="onMoveDown()"
+                        ontouchstart="onMoveDown()">⯯
+                    </button>
+                    <button class="btn move-right increase-move-icon flex center" onclick="onMoveRight()"
+                        ontouchstart="onMoveRight()">⯮
+                    </button>
+                </div>
+                <div class="control4 flex">
                     <button class="btn increase-font" onclick="onIncreaseFont()" ontouchstart="onIncreaseFont()">
                         <img class="action-img" src="icons/increase font - icon.png">
                     </button>
@@ -94,39 +98,43 @@
                     <button class="btn align-right" onclick="onAlignRight()" ontouchstart="onAlignRight()">
                         <img class="action-img" src="icons/align-to-right.png">
                     </button>
-
-                    <select class="font-family" onchange="onSetFontFamily(this.value)" aria-label=" ">
+                </div>
+                <div class="control5 flex">
+                    <select class="btn font-family" onchange="onSetFontFamily(this.value)" aria-label=" ">
                         <option value="Arial">Arial</option>
                         <option value="David">David</option>
                         <option value="Miryam">Miryam</option>
                     </select>
 
-                    stroke:<input type="color" class="switch-stroke" placeholder="switch-stroke"
+                    stroke:<input type="color" class="btn switch-stroke" placeholder="switch-stroke"
                         onchange="onTextStroke()" name="switchStroke" required />
 
-                    color:<input type="color" class="set-color" placeholder="set-color" onchange="onSetColor()"
+                    color:<input type="color" class="btn set-color" placeholder="set-color" onchange="onSetColor()"
                         name="setColor" required />
                 </div>
-                <div class="save-area">
-                    
+                <div class="control6 flex">
+
                     <!-- <button class="btn upload" title="upload from computer" onclick="onImgInput(event)" ontouchstart="onImgInput(event)">
                         <img class="action-img" src='icons/folder.png'>
                     </button> -->
 
-                    <button class="btn save" title="Save to memes" onclick="onSaveLocally()" ontouchstart="onSaveLocally()">
+                    <button class="btn save flex center" title="Save to memes" onclick="onSaveLocally()"
+                        ontouchstart="onSaveLocally()">
                         <img class="action-img" src='icons/local-save.png'>
                     </button>
 
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <form action="" class="facebook" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                         <input name="img" id="imgData" type="hidden" />
-                        <button class="btn action-img" type="submit"><img class="action-img" src='icons/facebook-logo.png'></button>
+                        <button class="btn action-img facebook flex center" title="Share on facebook" type="submit"><img class="action-img"
+                                src='icons/facebook-logo.png'></button>
                         <!-- <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a> -->
                         <span class="share-container"></span>
-                      </form>
+                    </form>
 
-                    <a class="btn download" title="Download to your computer" href="#" onclick="onDownload(this)" ontouchstart="onDownload(this)" download="">
-                        <img class="btn action-img download-img" src='icons/download.png'>
-                      </a>
+                    <a class="btn flex center download" title="Download to your computer" href="#" onclick="onDownload(this)"
+                        ontouchstart="onDownload(this)" download="">
+                        <img class="action-img download-img" src='icons/download.png'>
+                    </a>
                 </div>
             </div>
         </section>
@@ -135,7 +143,7 @@
         </section>
     </main>
     <footer class="flex flex-col center">
-        <div class="logo flex"><img class="logo-img flex center " src="icons/LOGO.png"></div>
+        <div class="logo-ftr flex"><img class="logo-img flex center " src="icons/LOGO.png"></div>
         <div class="flex">@coffee carmit vaknin 2021</div>
     </footer>
 

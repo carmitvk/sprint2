@@ -2,6 +2,9 @@
 'use strict'
 var gElCanvas;
 var gCtx;
+var gCurrSticker;
+var gStartPos;
+const gTouchEvs = ['ontouchmove', 'ontouchstart', 'ontouchend']
 
 
 function init() {
@@ -10,8 +13,37 @@ function init() {
     renderCanVas();
     renderGallery();
     renderMems();
+    renderStickers();
+    addListeners();
     moveToTab('gallery-tab');
 }
+
+function addListeners() {
+    addMouseListeners();
+    addTouchListeners();
+    window.addEventListener('resize', () => {
+        // resizeCanvas();
+        renderCanVas();
+    })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousemove', onMove);
+    gElCanvas.addEventListener('mousedown', onDown);
+    gElCanvas.addEventListener('mouseup', onUp);
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchmove', onMove);
+    gElCanvas.addEventListener('touchstart', onDown);
+    gElCanvas.addEventListener('touchend', onUp);
+}
+
+// function resizeCanvas() {
+//     const elContainer = document.querySelector('.canvas-container');
+//     gElCanvas.width = elContainer.offsetWidth;
+//     gElCanvas.height = elContainer.offsetHeight;
+// }
 
 function moveToTab(tabName) {
     var element = document.getElementById(tabName);
@@ -42,14 +74,9 @@ function onMenuClicked() {
     element.classList.toggle('menu-open');
 
     var elMainNav = document.querySelector('.main-nav');
-    // if (element.style.display === 'flex'){
-    //     element.style.display = 'none';
-    // }else{
-    //     element.style.display = 'flex';
-    // }
 
     element = document.querySelector('.menu-btn');
-    element.classList.toggle('menu-open')//???
+    element.classList.toggle('menu-open')
     if (element.innerHTML === 'X') {
         elMainNav.style.display = 'none';
         element.innerHTML = '☰';
@@ -66,7 +93,6 @@ function renderGallery() {
         return `<img class='one-img' src='${img.url}' onclick="onPickImg(${img.id},'${img.url}')" alt="">`
     });
     var elGallery = document.querySelector('.img-container');
-    // var elGallery = document.querySelector('.gallery-container'); //carmit
     elGallery.innerHTML = strHtml.join('');
 }
 
@@ -81,7 +107,19 @@ function renderMems() {
     renderMemCanvases();
 }
 
-function renderMemCanvases() {
+
+function renderStickers() {
+    var stickers = getStickers();
+    var strHtmls = stickers.map(sticker => {
+        return `<img src="${sticker.url}" id="sticker${sticker.id}" class="flex" onclick="onPickSticker(${sticker.id})"
+        > `
+    });
+    var elStickers = document.querySelector('.stickers-container');
+    elStickers.innerHTML = strHtmls.join('');
+}
+
+
+function renderMemCanvases() {//carmit
     var memes = getMemes();
 
     memes.forEach((meme) => {
@@ -110,10 +148,29 @@ function renderMemCanvases() {
                 ctx.fillText(text, x, y)
                 ctx.strokeText(text, x, y)
             });
+
+            meme.stickers.forEach((sticker) => {  //carmit
+                var canvasId = `sticker${sticker.id}`;
+                var elSticker = document.getElementById(canvasId);
+
+                var imgSticker = new Image();//here
+                imgSticker.onload = function () {
+                    var x = (sticker.x / gElCanvas.width) * elMemeCanvs.width;
+                    var y = (sticker.y / gElCanvas.height) * elMemeCanvs.height;
+                    // ctx.drawImage(imgSticker, x, y, (30*elMemeCanvs.width) / gElCanvas.width),
+                    // (30*elMemeCanvs.height)/gElCanvas.height;
+
+                    ctx.drawImage(imgSticker, x, y, 15, 15);
+                    // ctx.drawImage(imgSticker, x, y, elSticker.width, elSticker.height);
+                }
+                var allStickers = getStickers();
+                imgSticker.src = allStickers[sticker.id - 1].url;
+            });
         }
         img.src = meme.selectedImgUrl;
     });
 }
+
 
 function onInsertText(el) {
     console.log('onInsertText');
@@ -141,6 +198,16 @@ function onPickImg(id, url) {
     renderCanVas();
 }
 
+function onPickSticker(id) { //carmit url??
+
+    //Save to current Meme
+    setCurrSticker(id);
+
+    //print data on canvas
+    renderCanVas();
+}
+
+
 function onPickMeme(memeId) {
     //hide gallery
     var element = document.querySelector('.memes-container');
@@ -167,14 +234,15 @@ function onPickMeme(memeId) {
 }
 
 function setDataControls(pickedMeme) {
+    if (!pickedMeme.lines || pickedMeme.lines.length===0) return;
     document.querySelector('.set-color').value = pickedMeme.lines[pickedMeme.selectedLineIdx].color;
     document.querySelector('.switch-stroke').value = pickedMeme.lines[pickedMeme.selectedLineIdx].stroke;
     document.querySelector('.font-family').value = pickedMeme.lines[pickedMeme.selectedLineIdx].fontFamily;
 }
 
+
 function renderCanVas() {
     var currMeme = getCurrMeme();
-
     //put into canvas
     document.querySelector('canvas').innerHTML = ''
     var img = new Image();
@@ -194,14 +262,27 @@ function renderCanVas() {
             gCtx.fillText(text, x, y)
             gCtx.strokeText(text, x, y)
         });
-        if (currMeme.lines && currMeme.lines.length>0) {
+
+        if (currMeme.lines && currMeme.lines.length > 0) {
             //draw rect for selected row: 
-            var startY = currMeme.lines[currMeme.selectedLineIdx].y - currMeme.lines[currMeme.selectedLineIdx].fontSize+5 ;
-            
+            var startY = currMeme.lines[currMeme.selectedLineIdx].y - currMeme.lines[currMeme.selectedLineIdx].fontSize + 5;
+
             drawRect(0, startY, gElCanvas.width, currMeme.lines[currMeme.selectedLineIdx].fontSize);
         }
+
+        currMeme.stickers.forEach((sticker) => {  //carmit
+            var canvasId = `sticker${sticker.id}`;
+            var elSticker = document.getElementById(canvasId);
+
+            var imgSticker = new Image();
+            imgSticker.onload = function () {
+                gCtx.drawImage(imgSticker, sticker.x, sticker.y, elSticker.width, elSticker.height);
+            }
+            var allStickers = getStickers();
+            imgSticker.src = allStickers[sticker.id - 1].url;
+        });
     }
-    
+
     img.src = currMeme.selectedImgUrl;
 }
 
@@ -210,7 +291,6 @@ function drawRect(x, y, width, heigh) {
     gCtx.beginPath()
     gCtx.rect(x, y, width, heigh)
     gCtx.fillStyle = 'rgba(0,0,0,.2)';
-    // gCtx.globalAlpha = 0.3;    
     gCtx.fillRect(x, y, width, heigh)
     gCtx.strokeStyle = 'white'
     gCtx.stroke()
@@ -247,7 +327,7 @@ function createNewLine() {
     var newLine = createLine('', x, y);
     addLine(newLine);
     currMeme.selectedLineIdx = currMeme.lines.length - 1;
-    renderCanVas();//carmit
+    renderCanVas();
 }
 
 function onMoveRight() {
@@ -375,9 +455,71 @@ function onSetGalleryFilter(filter) {
     renderGallery();
 }
 
-// carmit
 function renderImg() {
     setCurrImg(Date.now(), getLoadImgUrl()); //timestamp as id
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    // renderCanVas();
+}
+
+
+
+
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    if (!isStickerClicked(pos)) return
+    gCurrSticker.isDragging=true;
+    gStartPos = pos;
+    document.body.style.cursor = 'grabbing'
+}
+
+function isStickerClicked(pos) {
+    var meme = getCurrMeme();
+    if (!meme || !meme.stickers || meme.stickers.length===0) return false;
+    var pickedSticker = meme.stickers.find(sticker => 
+        (pos.x>=sticker.x && pos.x<sticker.x+30) 
+        &&
+        (pos.y>=sticker.y && pos.y<sticker.y+30)
+        );
+
+    if (pickedSticker){ 
+        gCurrSticker = pickedSticker;
+        return true;        
+    }
+    return false;
+}
+
+function onMove(ev) {
+    if (gCurrSticker && gCurrSticker.isDragging) {
+        const pos = getEvPos(ev)
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+
+        gCurrSticker.x += dx
+        gCurrSticker.y += dy
+
+        gStartPos = pos
+        renderCanVas()
+        // renderCircle()
+    }
+}
+
+function onUp() {
+    if (!gCurrSticker) return;
+    gCurrSticker.isDragging = false
+    document.body.style.cursor = 'grab'
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
 }

@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     height: 100vh;
     width:100vw;
-    background-color: rgb(233, 162, 95);
+    background-color: rgb(177, 174, 172);
 }
 
 /* @font-face { */
@@ -115,6 +115,7 @@ li:hover{
 .download{   
     display: inline-block;
 }
+
 
 .memes-container >*{
     margin: 0.1%;
@@ -226,13 +227,15 @@ footer{
     cursor: pointer;
     height: 30px;
     width: 50px;
-    background-color:rgb(216, 189, 163); 
+    background-color:rgb(231, 228, 225); 
+    /* background-color:rgb(216, 189, 163);  */
     border-radius: 5px;
     line-height: 30px;
     outline: none;
     /* -webkit-box-shadow: 5px 5px 15px 5px #c99d0f;  */
-    box-shadow: 5px 5px 25px -2px #9c5208;
-
+    box-shadow: 5px 5px 25px -2px #555453;
+    /* box-shadow: 5px 5px 25px -2px #9c5208; */
+    border: 1px solid gray;
 }
 
 .add-line{
@@ -248,7 +251,7 @@ footer{
         border-radius: 5%;
 }
 .text-line{
-    background-color:rgb(216, 189, 163);
+    background-color:rgb(226, 223, 220);
 }
 .control1{
     flex-grow: 1;
@@ -289,6 +292,21 @@ footer{
     align-items: center;
     margin-bottom: 20px;
 }
+
+
+
+.stickers-container{
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border:0.5px solid gray;
+}
+
+.stickers-container >*{
+    height:30px;
+    width: 30px;
+    cursor: pointer;
+}
+
 
 
 .facebook, .download, .save{

@@ -7,6 +7,13 @@ var gGalleryFilter;
 
 var gKeywords = { 'Politic': 2, 'Peoples': 4,'Animales': 6,'Cute': 2,'Happy': 6 ,'Robots': 4};
 
+var gStickers =[{id:1,url:'stickers/cat.png'},
+                {id:2,url:'stickers/fire.jpg'},
+                {id:3,url:'stickers/keren.jpg'},
+                {id:4,url:'stickers/mask.jpg'},
+                {id:5,url:'stickers/red.jpg'},
+                {id:6,url:'stickers/star.jpg'},
+                {id:7,url:'stickers/wow.jpg'} ];
 
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['Politic','Peoples'] },
 { id: 2, url: 'img/2.jpg', keywords: ['Animales'] },
@@ -73,7 +80,8 @@ function _createCurrMeme() {
             //     x: 100,
             //     y: 400
             // }
-        ]
+        ],
+        stickers:[]
     }
 }
 
@@ -104,10 +112,20 @@ function getCurrMeme() {
     return gCurrMeme;
 }
 
+function getStickers(){
+    return gStickers;
+}
+
 function setCurrImg(id, url) {
     gCurrMeme.selectedImgId = id;
     gCurrMeme.selectedImgUrl = url;
 }
+
+function setCurrSticker(id){
+    gCurrMeme.stickers.push({id:id,x:0,y:0,isDragging:false});
+    // gCurrMeme.selectedImgUrl = url;
+}
+
 
 function saveLocallyCurrMeme() {
     addMemeToMems();

@@ -119,7 +119,7 @@ function renderStickers() {
 }
 
 
-function renderMemCanvases() {//carmit
+function renderMemCanvases() {
     var memes = getMemes();
 
     memes.forEach((meme) => {
@@ -149,7 +149,7 @@ function renderMemCanvases() {//carmit
                 ctx.strokeText(text, x, y)
             });
 
-            meme.stickers.forEach((sticker) => {  //carmit
+            meme.stickers.forEach((sticker) => {  
                 var canvasId = `sticker${sticker.id}`;
                 var elSticker = document.getElementById(canvasId);
 
@@ -157,11 +157,9 @@ function renderMemCanvases() {//carmit
                 imgSticker.onload = function () {
                     var x = (sticker.x / gElCanvas.width) * elMemeCanvs.width;
                     var y = (sticker.y / gElCanvas.height) * elMemeCanvs.height;
-                    // ctx.drawImage(imgSticker, x, y, (30*elMemeCanvs.width) / gElCanvas.width),
-                    // (30*elMemeCanvs.height)/gElCanvas.height;
 
-                    ctx.drawImage(imgSticker, x, y, 15, 15);
-                    // ctx.drawImage(imgSticker, x, y, elSticker.width, elSticker.height);
+                    ctx.drawImage(imgSticker, x, y, elMemeCanvs.width/gElCanvas.width*30, elMemeCanvs.height/gElCanvas.height*30); //30=img sz
+
                 }
                 var allStickers = getStickers();
                 imgSticker.src = allStickers[sticker.id - 1].url;
@@ -198,7 +196,7 @@ function onPickImg(id, url) {
     renderCanVas();
 }
 
-function onPickSticker(id) { //carmit url??
+function onPickSticker(id) { 
 
     //Save to current Meme
     setCurrSticker(id);
@@ -270,7 +268,7 @@ function renderCanVas() {
             drawRect(0, startY, gElCanvas.width, currMeme.lines[currMeme.selectedLineIdx].fontSize);
         }
 
-        currMeme.stickers.forEach((sticker) => {  //carmit
+        currMeme.stickers.forEach((sticker) => { 
             var canvasId = `sticker${sticker.id}`;
             var elSticker = document.getElementById(canvasId);
 

@@ -138,6 +138,12 @@ function getMemById(memeId){
     return pickedMeme;
 }
 
+// function getStickerById(Id){
+//     const pickedSticker = gCurrMeme.stickers.find(sticker => sticker.id === Id);
+//     if (!pickedSticker) return -1;
+//     return pickedSticker;
+// }
+
 function getIdxMemById(id){
     gMemes.findIndex(meme => meme.id === id);
 }

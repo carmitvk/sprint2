@@ -111,13 +111,41 @@ function renderMems() {
 function renderStickers() {
     var stickers = getStickers();
     var strHtmls = stickers.map(sticker => {
-        return `<img src="${sticker.url}" id="sticker${sticker.id}" class="flex" onclick="onPickSticker(${sticker.id})"
-        > `
+        return `<img src="${sticker.url}" id="sticker${sticker.id}" class="flex" onclick="onPickSticker(${sticker.id})"> `
+
+
+        // oncontextmenu="mouseRight()" contextmenu="right-menue">
+        
+        // <menu type="context" id="right-menue${sticker.id}">
+        //   <menuitem label="Refresh" onclick="deleteSticker(${sticker.id})"></menuitem>
+          
+        //  </menu>`
     });
     var elStickers = document.querySelector('.stickers-container');
     elStickers.innerHTML = strHtmls.join('');
 }
 
+// function deleteSticker(id){//here
+//     // getStickerById(id);
+
+//     var currMeme = getCurrMeme();
+//     currMeme.stickers.splice(id, 1);
+
+//     renderCanVas();
+
+// }
+
+function onClear(){
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height); //here
+    var meme = getCurrMeme();
+    meme.lines=null;
+    meme.stickers=null;
+    meme.lines=[];
+    meme.stickers=[];
+    
+
+    moveToTab('gallery-tab');
+}
 
 function renderMemCanvases() {
     var memes = getMemes();
@@ -153,7 +181,7 @@ function renderMemCanvases() {
                 var canvasId = `sticker${sticker.id}`;
                 var elSticker = document.getElementById(canvasId);
 
-                var imgSticker = new Image();//here
+                var imgSticker = new Image();
                 imgSticker.onload = function () {
                     var x = (sticker.x / gElCanvas.width) * elMemeCanvs.width;
                     var y = (sticker.y / gElCanvas.height) * elMemeCanvs.height;

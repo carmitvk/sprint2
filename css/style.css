@@ -358,6 +358,31 @@ footer{
   
 
 
+
+
+
+/* .search-drop-list {
+    height: 50px;
+    width: 60px;
+    flex-grow: 1;
+    border-radius: 2em;
+} */
+
+/* .search-drop-list { */
+
+    /* background-color: transparent; */
+    /* color: #909193; */
+    /* border: none; */
+    /* font-size: 1em; */
+    /* font-family: poppins-bold; */
+    /* padding-left: 40px; */
+    /* outline: none; */
+/* } */
+
+
+
+  
+
 @media (max-width: 740px){
 
     .menu-btn{

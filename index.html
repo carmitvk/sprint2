@@ -37,14 +37,19 @@
     <main class="flex main-container">
 
         <section class="gallery-container flex">
-            <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
+            <form class="filter-gallery" onchange="onSearchImg(event)">
+                <input list="search-drop-list" class="search" id="my-search" name="search" placeholder="Search" />
+                <datalist id="search-drop-list">
+                </datalist>
+            </form>
+            <!-- <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
                 <option value="Politic">Politic</option>
                 <option value="Animales">Animales</option>
                 <option value="Happy">Happy</option>
                 <option value="Cute">Cute</option>
                 <option value="Peoples">Peoples</option>
                 <option value="Robots">Robots</option>
-            </select>
+            </select> -->
             <div class="img-container">
             </div>
         </section>
@@ -65,10 +70,12 @@
                     <button class="add-line btn flex" onclick="createNewLine()" ontouchstart="createNewLine()">+
                         <!-- <img class="action-img" src="icons/add.png"> -->
                     </button>
-                    <button class="btn action-img delete-line" onclick="onRemoveLine()" title="Remove text line" ontouchstart="onRemoveLine()">
+                    <button class="btn action-img delete-line" onclick="onRemoveLine()" title="Remove text line"
+                        ontouchstart="onRemoveLine()">
                         <img class="action-img" src="icons/trash.png">
                     </button>
-                    <button class="btn action-img clear-canvas-icons" onclick="onClear()" title="Clean all and restart" ontouchstart="onClear()">
+                    <button class="btn action-img clear-canvas-icons" onclick="onClear()" title="Clean all and restart"
+                        ontouchstart="onClear()">
                         <img class="action-img" src="icons/clear.png">
                     </button>
                 </div>
@@ -76,7 +83,8 @@
                     <button class="btn move-left increase-move-icon flex center" onclick="onMoveLeft()"
                         ontouchstart="onMoveLeft()">⯬
                     </button>
-                    <button class="btn move-up increase-move-icon flex center" onclick="onMoveUp()" ontouchstart="onMoveUp()">⯭
+                    <button class="btn move-up increase-move-icon flex center" onclick="onMoveUp()"
+                        ontouchstart="onMoveUp()">⯭
                     </button>
                     <button class="btn move-down increase-move-icon flex center" onclick="onMoveDown()"
                         ontouchstart="onMoveDown()">⯯
@@ -130,16 +138,17 @@
                         <img class="action-img" src='icons/local-save.png'>
                     </button>
 
-                    <form action="" class="facebook" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <form action="" class="facebook" method="POST" enctype="multipart/form-data"
+                        onsubmit="uploadImg(this, event)">
                         <input name="img" id="imgData" type="hidden" />
-                        <button class="btn action-img facebook flex center" title="Share on facebook" type="submit"><img class="action-img"
-                                src='icons/facebook-logo.png'></button>
+                        <button class="btn action-img facebook flex center" title="Share on facebook" type="submit"><img
+                                class="action-img" src='icons/facebook-logo.png'></button>
                         <!-- <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a> -->
                         <span class="share-container"></span>
                     </form>
 
-                    <a class="btn flex center download" title="Download to your computer" href="#" onclick="onDownload(this)"
-                        ontouchstart="onDownload(this)" download="">
+                    <a class="btn flex center download" title="Download to your computer" href="#"
+                        onclick="onDownload(this)" ontouchstart="onDownload(this)" download="">
                         <img class="action-img download-img" src='icons/download.png'>
                     </a>
                 </div>
@@ -155,7 +164,7 @@
     </footer>
 
 
-
+    <script src="js/search_service.js"></script>
     <script src="js/storage_service.js"></script>
     <script src="js/meme_service.js"></script>
     <script src="js/upload_service.js"></script>

@@ -7,6 +7,8 @@ var gGalleryFilter;
 
 var gKeywords = { 'Politic': 2, 'Peoples': 4,'Animales': 6,'Cute': 2,'Happy': 6 ,'Robots': 4};
 
+
+
 var gStickers =[{id:1,url:'stickers/cat.png'},
                 {id:2,url:'stickers/fire.jpg'},
                 {id:3,url:'stickers/keren.jpg'},
@@ -163,13 +165,11 @@ function saveMemesToStorage() {
     saveToStorage(KEY_MEMES, gMemes)
 }
 
-function setGalleryFilter(filter){
-    gGalleryFilter = filter;
-}
+// function setGalleryFilter(filter){
+//     gGalleryFilter = filter;
+// }
 
 
-// var gKeywords = { 'Politic': 2, 'Peoples': 4,'Animales': 6,'Cute': 2,'Happy': 6 ,'Robots': 4};
-// var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['Politic','Peoples'] },
 
 function setGalleryFilter(filter){
     gGalleryFilter = filter;

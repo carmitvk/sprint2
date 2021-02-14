@@ -15,6 +15,7 @@ function init() {
     renderMems();
     renderStickers();
     addListeners();
+    // renderAutoKeywords();
     moveToTab('gallery-tab');
 }
 
@@ -86,6 +87,7 @@ function onMenuClicked() {
         elMainNav.style.display = 'flex';
     }
 }
+
 
 function renderGallery() {
     var imgs = getImgs();
@@ -485,8 +487,6 @@ function renderImg() {
     setCurrImg(Date.now(), getLoadImgUrl()); //timestamp as id
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
-
-
 
 
 function onDown(ev) {

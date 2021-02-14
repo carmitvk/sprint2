@@ -11,12 +11,13 @@ function init() {
     gElCanvas = document.getElementById('meme-canvas');
     gCtx = gElCanvas.getContext('2d');
     renderCanVas();
-    renderGallery();
     renderMems();
     renderStickers();
     addListeners();
-    // renderAutoKeywords();
+    // renderAutoComplete();
+    // renderClickWords();
     moveToTab('gallery-tab');
+    renderGallery();
 }
 
 function addListeners() {
@@ -96,6 +97,7 @@ function renderGallery() {
     });
     var elGallery = document.querySelector('.img-container');
     elGallery.innerHTML = strHtml.join('');
+
 }
 
 function renderMems() {
@@ -111,40 +113,53 @@ function renderMems() {
 
 
 function renderStickers() {
-    var stickers = getStickers();
-    var strHtmls = stickers.map(sticker => {
+    var allStickers = getStickers();
+    var newStickers = [];
+    for (var i = 0; i < NUM_STICKERS_IN_PAGE; i++) {
+        // if (i + gNumIncremets === allStickers.length) {
+        //     gNumIncremets = 0;
+        // }
+        newStickers.push(allStickers[i + gNumIncremets]);
+    }
+
+
+    var strHtmls = newStickers.map(sticker => {
         return `<img src="${sticker.url}" id="sticker${sticker.id}" class="flex" onclick="onPickSticker(${sticker.id})"> `
-
-
-        // oncontextmenu="mouseRight()" contextmenu="right-menue">
-        
-        // <menu type="context" id="right-menue${sticker.id}">
-        //   <menuitem label="Refresh" onclick="deleteSticker(${sticker.id})"></menuitem>
-          
-        //  </menu>`
     });
     var elStickers = document.querySelector('.stickers-container');
     elStickers.innerHTML = strHtmls.join('');
 }
 
-// function deleteSticker(id){//here
-//     // getStickerById(id);
+function onRightStickerPage(){
+    rightStickerPage();
+    renderStickers();
+}
 
-//     var currMeme = getCurrMeme();
-//     currMeme.stickers.splice(id, 1);
+function onLeftStickerPage(){
+    leftStickerPage();
+    renderStickers();
+}
 
-//     renderCanVas();
+// function renderStickers() {
 
+// var stickers = getStickers();
+// var strHtmls = stickers.map(sticker => {
+//     return `<img src="${sticker.url}" id="sticker${sticker.id}" class="flex" onclick="onPickSticker(${sticker.id})"> `
+
+
+// });
+// var elStickers = document.querySelector('.stickers-container');
+// elStickers.innerHTML = strHtmls.join('');
 // }
 
-function onClear(){
+function onClear() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height); //here
     var meme = getCurrMeme();
-    meme.lines=null;
-    meme.stickers=null;
-    meme.lines=[];
-    meme.stickers=[];
-    
+    meme.lines = null;
+    meme.stickers = null;
+    meme.lines = [];
+    meme.stickers = [];
+
 
     moveToTab('gallery-tab');
 }
@@ -179,7 +194,7 @@ function renderMemCanvases() {
                 ctx.strokeText(text, x, y)
             });
 
-            meme.stickers.forEach((sticker) => {  
+            meme.stickers.forEach((sticker) => {
                 var canvasId = `sticker${sticker.id}`;
                 var elSticker = document.getElementById(canvasId);
 
@@ -188,7 +203,7 @@ function renderMemCanvases() {
                     var x = (sticker.x / gElCanvas.width) * elMemeCanvs.width;
                     var y = (sticker.y / gElCanvas.height) * elMemeCanvs.height;
 
-                    ctx.drawImage(imgSticker, x, y, elMemeCanvs.width/gElCanvas.width*30, elMemeCanvs.height/gElCanvas.height*30); //30=img sz
+                    ctx.drawImage(imgSticker, x, y, elMemeCanvs.width / gElCanvas.width * 30, elMemeCanvs.height / gElCanvas.height * 30); //30=img sz
 
                 }
                 var allStickers = getStickers();
@@ -226,7 +241,7 @@ function onPickImg(id, url) {
     renderCanVas();
 }
 
-function onPickSticker(id) { 
+function onPickSticker(id) {
 
     //Save to current Meme
     setCurrSticker(id);
@@ -262,7 +277,7 @@ function onPickMeme(memeId) {
 }
 
 function setDataControls(pickedMeme) {
-    if (!pickedMeme.lines || pickedMeme.lines.length===0) return;
+    if (!pickedMeme.lines || pickedMeme.lines.length === 0) return;
     document.querySelector('.set-color').value = pickedMeme.lines[pickedMeme.selectedLineIdx].color;
     document.querySelector('.switch-stroke').value = pickedMeme.lines[pickedMeme.selectedLineIdx].stroke;
     document.querySelector('.font-family').value = pickedMeme.lines[pickedMeme.selectedLineIdx].fontFamily;
@@ -298,7 +313,7 @@ function renderCanVas() {
             drawRect(0, startY, gElCanvas.width, currMeme.lines[currMeme.selectedLineIdx].fontSize);
         }
 
-        currMeme.stickers.forEach((sticker) => { 
+        currMeme.stickers.forEach((sticker) => {
             var canvasId = `sticker${sticker.id}`;
             var elSticker = document.getElementById(canvasId);
 
@@ -478,9 +493,14 @@ function onDownload(elLink) {
     elLink.download = 'my-img.jpg';
 }
 
-function onSetGalleryFilter(filter) {
+function onSetGalleryFilter(ev) {
+    ev.preventDefault();
+    console.log('onSetGalleryFilter');
+
+    var filter = document.querySelector('#search-drop-list').value;
     setGalleryFilter(filter);
     renderGallery();
+
 }
 
 function renderImg() {
@@ -492,23 +512,23 @@ function renderImg() {
 function onDown(ev) {
     const pos = getEvPos(ev)
     if (!isStickerClicked(pos)) return
-    gCurrSticker.isDragging=true;
+    gCurrSticker.isDragging = true;
     gStartPos = pos;
     document.body.style.cursor = 'grabbing'
 }
 
 function isStickerClicked(pos) {
     var meme = getCurrMeme();
-    if (!meme || !meme.stickers || meme.stickers.length===0) return false;
-    var pickedSticker = meme.stickers.find(sticker => 
-        (pos.x>=sticker.x && pos.x<sticker.x+30) 
+    if (!meme || !meme.stickers || meme.stickers.length === 0) return false;
+    var pickedSticker = meme.stickers.find(sticker =>
+        (pos.x >= sticker.x && pos.x < sticker.x + 30)
         &&
-        (pos.y>=sticker.y && pos.y<sticker.y+30)
-        );
+        (pos.y >= sticker.y && pos.y < sticker.y + 30)
+    );
 
-    if (pickedSticker){ 
+    if (pickedSticker) {
         gCurrSticker = pickedSticker;
-        return true;        
+        return true;
     }
     return false;
 }

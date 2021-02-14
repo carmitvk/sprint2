@@ -36,13 +36,18 @@
     </header>
     <main class="flex main-container">
 
-        <section class="gallery-container flex">
-            <form class="filter-gallery" onchange="onSearchImg(event)">
-                <input list="search-drop-list" class="search" id="my-search" name="search" placeholder="Search" />
-                <datalist id="search-drop-list">
-                </datalist>
-            </form>
-            <!-- <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
+        <section class="gallery-container flex flex-col">
+            <div class="search-area">
+                <form autocomplete="off">
+                    <div class="autocomplete" style="width:200px;">
+                        <input id="search-drop-list" type="text" name="search" placeholder="Search key word"
+                            oninput="onSetGalleryFilter(event)">
+                    </div>
+                    <!-- <input type="submit" onclick="onSetGalleryFilter(event)"> -->
+                </form>
+
+
+                <!-- <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
                 <option value="Politic">Politic</option>
                 <option value="Animales">Animales</option>
                 <option value="Happy">Happy</option>
@@ -50,7 +55,8 @@
                 <option value="Peoples">Peoples</option>
                 <option value="Robots">Robots</option>
             </select> -->
-            <div class="img-container">
+            </div>
+            <div class="img-container flex">
             </div>
         </section>
         <section class="editor-container flex wrap">
@@ -68,7 +74,6 @@
                         ontouchstart="onSwitchFocus()">⬍
                     </button>
                     <button class="add-line btn flex" onclick="createNewLine()" ontouchstart="createNewLine()">+
-                        <!-- <img class="action-img" src="icons/add.png"> -->
                     </button>
                     <button class="btn action-img delete-line" onclick="onRemoveLine()" title="Remove text line"
                         ontouchstart="onRemoveLine()">
@@ -117,16 +122,20 @@
                         <option value="Miryam">Miryam</option>
                     </select>
 
-                    stroke:<input type="color" class="btn switch-stroke" placeholder="switch-stroke"
-                        onchange="onTextStroke()" name="switchStroke" required />
+                    <label for="switchStroke">stroke:</label>
+                    <input type="color" class="btn switch-stroke" placeholder="switch-stroke" onchange="onTextStroke()"
+                        name="switchStroke" required />
 
-                    color:<input type="color" class="btn set-color" placeholder="set-color" onchange="onSetColor()"
+                    <label for="setColor">color:</label>
+                    <input type="color" class="btn set-color" placeholder="set-color" onchange="onSetColor()"
                         name="setColor" required />
                 </div>
-
-                <div class="stickers-container flex">
+                <div>
+                    <button onclick="onLeftStickerPage()">⪻</button>
+                    <div class="stickers-container flex">
+                    </div>
+                    <button onclick="onRightStickerPage()">⪼</button>
                 </div>
-
                 <div class="control6 lines-color flex">
 
                     <!-- <button class="btn upload" title="upload from computer" onclick="onImgInput(event)" ontouchstart="onImgInput(event)">

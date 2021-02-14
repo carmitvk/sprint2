@@ -135,7 +135,6 @@ function leftStickerPage() {
     }
 }
 
-
 function setCurrImg(id, url) {
     gCurrMeme.selectedImgId = id;
     gCurrMeme.selectedImgUrl = url;
@@ -143,7 +142,6 @@ function setCurrImg(id, url) {
 
 function setCurrSticker(id) {
     gCurrMeme.stickers.push({ id: id, x: 0, y: 0, isDragging: false });
-    // gCurrMeme.selectedImgUrl = url;
 }
 
 
@@ -158,11 +156,6 @@ function getMemById(memeId) {
     return pickedMeme;
 }
 
-// function getStickerById(Id){
-//     const pickedSticker = gCurrMeme.stickers.find(sticker => sticker.id === Id);
-//     if (!pickedSticker) return -1;
-//     return pickedSticker;
-// }
 
 function getIdxMemById(id) {
     gMemes.findIndex(meme => meme.id === id);
@@ -191,7 +184,6 @@ function setGalleryFilter(filter) {
 function getImgs() {
     if (!gGalleryFilter) return gImgs;
     var sortedImgs = gImgs.filter((img) => {
-        // return img.keywords.includes(gGalleryFilter) 
         return img.keywords.some((key) => {
             return key.toLowerCase().includes(gGalleryFilter.toLowerCase());
         });

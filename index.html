@@ -43,9 +43,8 @@
                         <input id="search-drop-list" type="text" name="search" placeholder="Search key word"
                             oninput="onSetGalleryFilter(event)">
                     </div>
-                    <!-- <input type="submit" onclick="onSetGalleryFilter(event)"> -->
                 </form>
-
+                <span class="search-words"></span>
 
                 <!-- <select class="filter-gallery" onchange="onSetGalleryFilter(this.value)" aria-label=" ">
                 <option value="Politic">Politic</option>
@@ -130,11 +129,11 @@
                     <input type="color" class="btn set-color" placeholder="set-color" onchange="onSetColor()"
                         name="setColor" required />
                 </div>
-                <div>
-                    <button onclick="onLeftStickerPage()">⪻</button>
-                    <div class="stickers-container flex">
-                    </div>
-                    <button onclick="onRightStickerPage()">⪼</button>
+                <div class="all-sticker-container flex">
+                    <button class="flex btn " onclick="onLeftStickerPage()">⪻</button>
+                    <span class="stickers-container flex">
+                    </span>
+                    <button class="flex btn "onclick="onRightStickerPage()">⪼</button>
                 </div>
                 <div class="control6 lines-color flex">
 

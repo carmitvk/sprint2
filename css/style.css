@@ -224,8 +224,6 @@ footer{
 
 .text-line{
     width:100%;
-    border-radius: 4%;
-    line-height: 30px;
     outline: none;
 }
 
@@ -315,10 +313,8 @@ footer{
 
 
 .stickers-container{
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border:0.5px solid gray;
-    flex-grow: 2;
+    justify-content: space-around;
+    flex-grow: 1;
 }
 
 .stickers-container >*{
@@ -326,7 +322,12 @@ footer{
     width: 30px;
     cursor: pointer;
 }
-
+.all-sticker-container{
+    background-color: rgb(194, 192, 192);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
 
 .facebook, .download, .save{
@@ -381,9 +382,7 @@ footer{
 
 
 
-.search-drop-list{
-    border-radius: 5%;
-}
+
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;

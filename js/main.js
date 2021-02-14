@@ -14,8 +14,6 @@ function init() {
     renderMems();
     renderStickers();
     addListeners();
-    // renderAutoComplete();
-    // renderClickWords();
     moveToTab('gallery-tab');
     renderGallery();
 }
@@ -24,7 +22,6 @@ function addListeners() {
     addMouseListeners();
     addTouchListeners();
     window.addEventListener('resize', () => {
-        // resizeCanvas();
         renderCanVas();
     })
 }
@@ -41,11 +38,6 @@ function addTouchListeners() {
     gElCanvas.addEventListener('touchend', onUp);
 }
 
-// function resizeCanvas() {
-//     const elContainer = document.querySelector('.canvas-container');
-//     gElCanvas.width = elContainer.offsetWidth;
-//     gElCanvas.height = elContainer.offsetHeight;
-// }
 
 function moveToTab(tabName) {
     var element = document.getElementById(tabName);
@@ -116,9 +108,6 @@ function renderStickers() {
     var allStickers = getStickers();
     var newStickers = [];
     for (var i = 0; i < NUM_STICKERS_IN_PAGE; i++) {
-        // if (i + gNumIncremets === allStickers.length) {
-        //     gNumIncremets = 0;
-        // }
         newStickers.push(allStickers[i + gNumIncremets]);
     }
 
@@ -130,27 +119,16 @@ function renderStickers() {
     elStickers.innerHTML = strHtmls.join('');
 }
 
-function onRightStickerPage(){
+function onRightStickerPage() {
     rightStickerPage();
     renderStickers();
 }
 
-function onLeftStickerPage(){
+function onLeftStickerPage() {
     leftStickerPage();
     renderStickers();
 }
 
-// function renderStickers() {
-
-// var stickers = getStickers();
-// var strHtmls = stickers.map(sticker => {
-//     return `<img src="${sticker.url}" id="sticker${sticker.id}" class="flex" onclick="onPickSticker(${sticker.id})"> `
-
-
-// });
-// var elStickers = document.querySelector('.stickers-container');
-// elStickers.innerHTML = strHtmls.join('');
-// }
 
 function onClear() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height); //here
@@ -216,7 +194,6 @@ function renderMemCanvases() {
 
 
 function onInsertText(el) {
-    console.log('onInsertText');
     var currMeme = getCurrMeme();
     currMeme.lines[currMeme.selectedLineIdx].txt = el.value;
     renderCanVas();
@@ -311,15 +288,17 @@ function renderCanVas() {
             var startY = currMeme.lines[currMeme.selectedLineIdx].y - currMeme.lines[currMeme.selectedLineIdx].fontSize + 5;
 
             drawRect(0, startY, gElCanvas.width, currMeme.lines[currMeme.selectedLineIdx].fontSize);
+            //width also -- gCtx.measureText(currMeme.lines[currMeme.selectedLineIdx]).width
         }
 
         currMeme.stickers.forEach((sticker) => {
-            var canvasId = `sticker${sticker.id}`;
-            var elSticker = document.getElementById(canvasId);
-
+            var stickerId = `sticker${sticker.id}`;
+            var elSticker = document.getElementById(stickerId);
             var imgSticker = new Image();
             imgSticker.onload = function () {
-                gCtx.drawImage(imgSticker, sticker.x, sticker.y, elSticker.width, elSticker.height);
+                var elCanvasContainer = document.querySelector('.canvas-container');
+                var ratio = gElCanvas.height/elCanvasContainer.clientHeight ;
+                gCtx.drawImage(imgSticker, sticker.x * ratio, sticker.y * ratio, elSticker.width, elSticker.height);
             }
             var allStickers = getStickers();
             imgSticker.src = allStickers[sticker.id - 1].url;
@@ -330,7 +309,6 @@ function renderCanVas() {
 }
 
 function drawRect(x, y, width, heigh) {
-    console.log('on drawRect');
     gCtx.beginPath()
     gCtx.rect(x, y, width, heigh)
     gCtx.fillStyle = 'rgba(0,0,0,.2)';
@@ -350,7 +328,6 @@ function onSwitchFocus() {
 }
 
 function createNewLine() {
-    console.log('createNewLine');
     //set x y
     var currMeme = getCurrMeme();
     var x = gElCanvas.width / 2;
@@ -495,7 +472,6 @@ function onDownload(elLink) {
 
 function onSetGalleryFilter(ev) {
     ev.preventDefault();
-    console.log('onSetGalleryFilter');
 
     var filter = document.querySelector('#search-drop-list').value;
     setGalleryFilter(filter);
@@ -508,27 +484,26 @@ function renderImg() {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-
 function onDown(ev) {
     const pos = getEvPos(ev)
     if (!isStickerClicked(pos)) return
-    gCurrSticker.isDragging = true;
+    gCurrSticker.isDragging=true;
     gStartPos = pos;
     document.body.style.cursor = 'grabbing'
 }
 
 function isStickerClicked(pos) {
     var meme = getCurrMeme();
-    if (!meme || !meme.stickers || meme.stickers.length === 0) return false;
-    var pickedSticker = meme.stickers.find(sticker =>
-        (pos.x >= sticker.x && pos.x < sticker.x + 30)
+    if (!meme || !meme.stickers || meme.stickers.length===0) return false;
+    var pickedSticker = meme.stickers.find(sticker => 
+        (pos.x>=sticker.x && pos.x<sticker.x+30) 
         &&
-        (pos.y >= sticker.y && pos.y < sticker.y + 30)
-    );
+        (pos.y>=sticker.y && pos.y<sticker.y+30)
+        );
 
-    if (pickedSticker) {
+    if (pickedSticker){ 
         gCurrSticker = pickedSticker;
-        return true;
+        return true;        
     }
     return false;
 }
@@ -538,20 +513,18 @@ function onMove(ev) {
         const pos = getEvPos(ev)
         const dx = pos.x - gStartPos.x
         const dy = pos.y - gStartPos.y
-
         gCurrSticker.x += dx
         gCurrSticker.y += dy
 
         gStartPos = pos
         renderCanVas()
-        // renderCircle()
     }
 }
 
-function onUp() {
+function onUp(ev) {
     if (!gCurrSticker) return;
     gCurrSticker.isDragging = false
-    document.body.style.cursor = 'grab'
+    document.body.style.cursor = 'grab';
 }
 
 function getEvPos(ev) {

@@ -7,35 +7,7 @@ function getKeywords(){
 }
 
 
-// function onSearchImg(ev) {
-//     ev.preventDefault();
-//     var filter = document.querySelector('#my-search').value;
-//     document.querySelector('#my-search').value = '';
-//     onSetGalleryFilter(filter);
-// }
-
-
-
-//for search auto
-// function renderAutoComplete() {
-//     const words = getKeywords();
-//     var strHtml = words.map((word) => {
-//                             `<option value="${word}">${word}</option>`
-//                             });
-//     document.querySelector('#search-drop-list').innerHTML = strHtml.join('');
-// }
-
 autocomplete(document.querySelector('#search-drop-list'), gSearchKeys);
-
-
-// function renderClickWords() {
-//     const words = getKeywords();
-//     var strHtml = words.map((word) => {
-//                             `<span id=>${word}</span>`
-//                             });
-//     document.querySelector('#search-words').innerHTML = strHtml.join('');
-// }
-
 
 
 

@@ -11,13 +11,18 @@ function uploadImg(elForm, ev) {
     function onSuccess(uploadedImgUrl) {
         uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         document.querySelector('.share-container').innerHTML = `
-        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-           Share   
-        </a>`
+        <a id="share-facebook"  href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="openShare('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+         </a>`
+        moveToTab('share-facebook')
     }
-
     doUploadImg(elForm, onSuccess);
 }
+
+function openShare(url){
+    window.open(url);
+}
+
+
 
 function doUploadImg(elForm, onSuccess) {
     var formData = new FormData(elForm);
@@ -39,18 +44,6 @@ function onImgInput(ev) {
     loadImageFromInput(ev, renderImg)
 }
 
-// function loadImageFromInput(ev, onImageReady) {
-//     document.querySelector('canvas').innerHTML = ''
-//     var reader = new FileReader()
-
-//     reader.onload = function (event) {
-//         var img = new Image()
-//         img.onload = onImageReady.bind(null, img)
-//         img.src = event.target.result
-//         // gImg = img
-//     }
-//     reader.readAsDataURL(ev.target.files[0])
-// }
 
 function loadImageFromInput(ev, onImageReady) {
     document.querySelector('canvas').innerHTML = ''
